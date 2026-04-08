@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор Ваз - Создай свою вазу</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .controls-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            width: 350px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            max-height: calc(100vh - 150px);
+        }
+
+        .preview-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-section {
+            margin-bottom: 25px;
+        }
+
+        .control-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .control-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb:hover {
+            background: #764ba2;
+        }
+
+        .control-group input[type="color"] {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .control-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            background: white;
+            cursor: pointer;
+        }
+
+        .control-group select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .value-display {
+            text-align: right;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        #canvas-container {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .info-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .controls-panel {
+                width: 100%;
+                max-height: none;
+            }
+
+            .preview-panel {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏺 Конструктор Ваз</h1>
+        <p>Создайте уникальную вазу и скачайте модель для 3D-печати</p>
+    </header>
+
+    <div class="main-container">
+        <div class="controls-panel">
+            <div class="control-section">
+                <h3>📐 Геометрия</h3>
+                
+                <div class="control-group">
+                    <label>Высота вазы</label>
+                    <input type="range" id="height" min="50" max="300" value="200">
+                    <div class="value-display" id="height-value">200 мм</div>
+                </div>
+
+                <div class="control-group">
+                    <label>Диаметр основания</label>
+                    <input type="range" id="base-diameter" min="30" max="150" value="80">
+                    <div class="value-display" id="base-diameter-value">80 мм</div>
+                </div>
+
+                <div class="control-group">
+                    <label>Диаметр горлышка</label>
+                    <input type="range" id="neck-diameter" min="20" max="120" value="60">
+                    <div class="value-display" id="neck-diameter-value">60 мм</div>
+                </div>
+
+                <div class="control-group">
+                    <label>Диаметр талии</label>
+                    <input type="range" id="waist-diameter" min="20" max="150" value="50">
+                    <div class="value-display" id="waist-diameter-value">50 мм</div>
+                </div>
+
+                <div class="control-group">
+                    <label>Положение талии</label>
+                    <input type="range" id="waist-position" min="20" max="80" value="50">
+                    <div class="value-display" id="waist-position-value">50%</div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>🎨 Дизайн</h3>
+                
+                <div class="control-group">
+                    <label>Толщина стенок</label>
+                    <input type="range" id="wall-thickness" min="2" max="15" value="5">
+                    <div class="value-display" id="wall-thickness-value">5 мм</div>
+                </div>
+
+                <div class="control-group">
+                    <label>Количество сегментов</label>
+                    <input type="range" id="segments" min="3" max="12" value="8">
+                    <div class="value-display" id="segments-value">8</div>
+                </div>
+
+                <div class="control-group">
+                    <label>Профиль горлышка</label>
+                    <select id="neck-profile">
+                        <option value="straight">Прямой</option>
+                        <option value="flared">Расширяющийся</option>
+                        <option value="curved">Изогнутый</option>
+                        <option value="narrow">Узкий</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Текстура поверхности</label>
+                    <select id="surface-texture">
+                        <option value="smooth">Гладкая</option>
+                        <option value="ribbed">Рифленая</option>
+                        <option value="spiral">Спираль</option>
+                        <option value="faceted">Граненая</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Цвет предпросмотра</label>
+                    <input type="color" id="preview-color" value="#c9a86c">
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="exportSTL()">💾 Скачать STL</button>
+            <button class="btn btn-secondary" onclick="resetToDefault()">🔄 Сбросить</button>
+            
+            <p class="info-text">
+                💡 Вращайте модель мышкой для осмотра со всех сторон
+            </p>
+        </div>
+
+        <div class="preview-panel">
+            <div id="canvas-container">
+                <canvas id="preview-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Инициализация Three.js
+        let scene, camera, renderer, vaseMesh;
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let rotationSpeed = { x: 0, y: 0 };
+
+        function init() {
+            const container = document.getElementById('canvas-container');
+            const canvas = document.getElementById('preview-canvas');
+
+            // Сцена
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf5f5f5);
+
+            // Камера
+            camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(0, 0, 400);
+
+            // Рендерер
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // Освещение
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(100, 100, 100);
+            scene.add(directionalLight);
+
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight2.position.set(-100, -100, -100);
+            scene.add(directionalLight2);
+
+            // Создание вазы
+            updateVase();
+
+            // Обработчики событий
+            setupEventListeners();
+            setupControlListeners();
+
+            // Анимация
+            animate();
+        }
+
+        function createVaseGeometry() {
+            const height = parseFloat(document.getElementById('height').value);
+            const baseDiameter = parseFloat(document.getElementById('base-diameter').value);
+            const neckDiameter = parseFloat(document.getElementById('neck-diameter').value);
+            const waistDiameter = parseFloat(document.getElementById('waist-diameter').value);
+            const waistPosition = parseFloat(document.getElementById('waist-position').value) / 100;
+            const segments = parseInt(document.getElementById('segments').value);
+            const neckProfile = document.getElementById('neck-profile').value;
+            const surfaceTexture = document.getElementById('surface-texture').value;
+
+            const radiusSegments = Math.max(16, segments * 4);
+            const heightSegments = 50;
+
+            const shape = new THREE.Shape();
+            const points = [];
+
+            // Генерация профиля вазы
+            const numPoints = 20;
+            for (let i = 0; i <= numPoints; i++) {
+                const t = i / numPoints;
+                const y = (t - 0.5) * height;
+                
+                let radius;
+                
+                if (t < waistPosition) {
+                    // От основания до талии
+                    const localT = t / waistPosition;
+                    radius = baseDiameter / 2 + (waistDiameter / 2 - baseDiameter / 2) * localT;
+                    
+                    // Добавляем кривизну
+                    const curveFactor = Math.sin(localT * Math.PI) * (baseDiameter * 0.1);
+                    radius += curveFactor;
+                } else {
+                    // От талии до горлышка
+                    const localT = (t - waistPosition) / (1 - waistPosition);
+                    radius = waistDiameter / 2 + (neckDiameter / 2 - waistDiameter / 2) * localT;
+                    
+                    // Профиль горлышка
+                    if (neckProfile === 'flared') {
+                        radius += Math.pow(localT, 2) * (neckDiameter * 0.15);
+                    } else if (neckProfile === 'curved') {
+                        radius += Math.sin(localT * Math.PI) * (neckDiameter * 0.1);
+                    } else if (neckProfile === 'narrow') {
+                        radius *= (1 - localT * 0.2);
+                    }
+                }
+
+                // Текстура поверхности
+                if (surfaceTexture === 'ribbed') {
+                    radius += Math.sin(t * Math.PI * 10) * 2;
+                } else if (surfaceTexture === 'spiral') {
+                    radius += Math.sin(t * Math.PI * 20 + t * 10) * 1.5;
+                }
+
+                points.push(new THREE.Vector2(radius, y));
+            }
+
+            // Создаем геометрию вращения
+            const geometry = new THREE.LatheGeometry(points, radiusSegments);
+
+            return geometry;
+        }
+
+        function updateVase() {
+            if (vaseMesh) {
+                scene.remove(vaseMesh);
+                vaseMesh.geometry.dispose();
+                vaseMesh.material.dispose();
+            }
+
+            const geometry = createVaseGeometry();
+            const color = document.getElementById('preview-color').value;
+            
+            const material = new THREE.MeshPhongMaterial({
+                color: color,
+                specular: 0x444444,
+                shininess: 50,
+                side: THREE.DoubleSide
+            });
+
+            vaseMesh = new THREE.Mesh(geometry, material);
+            vaseMesh.castShadow = true;
+            vaseMesh.receiveShadow = true;
+            scene.add(vaseMesh);
+        }
+
+        function setupControlListeners() {
+            const controls = [
+                'height', 'base-diameter', 'neck-diameter', 'waist-diameter',
+                'waist-position', 'wall-thickness', 'segments', 'neck-profile',
+                'surface-texture', 'preview-color'
+            ];
+
+            controls.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener('input', () => {
+                    // Обновление отображения значений
+                    if (element.type === 'range') {
+                        const valueDisplay = document.getElementById(id + '-value');
+                        if (valueDisplay) {
+                            if (id.includes('diameter') || id.includes('height') || id.includes('thickness')) {
+                                valueDisplay.textContent = element.value + ' мм';
+                            } else if (id.includes('position')) {
+                                valueDisplay.textContent = element.value + '%';
+                            } else {
+                                valueDisplay.textContent = element.value;
+                            }
+                        }
+                    }
+                    updateVase();
+                });
+            });
+        }
+
+        function setupEventListeners() {
+            const canvas = document.getElementById('preview-canvas');
+
+            // Вращение мышью
+            canvas.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+
+                const deltaX = e.clientX - previousMousePosition.x;
+                const deltaY = e.clientY - previousMousePosition.y;
+
+                rotationSpeed.y = deltaX * 0.01;
+                rotationSpeed.x = deltaY * 0.01;
+
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            canvas.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+
+            // Зум колесиком
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                camera.position.z += e.deltaY * 0.5;
+                camera.position.z = Math.max(200, Math.min(600, camera.position.z));
+            });
+
+            // Изменение размера окна
+            window.addEventListener('resize', () => {
+                const container = document.getElementById('canvas-container');
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            if (vaseMesh) {
+                // Плавное замедление вращения
+                vaseMesh.rotation.y += rotationSpeed.y;
+                vaseMesh.rotation.x += rotationSpeed.x;
+                rotationSpeed.x *= 0.95;
+                rotationSpeed.y *= 0.95;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        function generateSTL() {
+            const geometry = createVaseGeometry();
+            
+            let stlContent = 'solid vase\n';
+
+            const positions = geometry.attributes.position.array;
+            const indices = geometry.index ? geometry.index.array : null;
+
+            if (indices) {
+                for (let i = 0; i < indices.length; i += 3) {
+                    const v1 = new THREE.Vector3(
+                        positions[indices[i] * 3],
+                        positions[indices[i] * 3 + 1],
+                        positions[indices[i] * 3 + 2]
+                    );
+                    const v2 = new THREE.Vector3(
+                        positions[indices[i + 1] * 3],
+                        positions[indices[i + 1] * 3 + 1],
+                        positions[indices[i + 1] * 3 + 2]
+                    );
+                    const v3 = new THREE.Vector3(
+                        positions[indices[i + 2] * 3],
+                        positions[indices[i + 2] * 3 + 1],
+                        positions[indices[i + 2] * 3 + 2]
+                    );
+
+                    // Вычисляем нормаль
+                    const normal = new THREE.Vector3();
+                    new THREE.Triangle(v1, v2, v3).getNormal(normal);
+
+                    stlContent += `  facet normal ${normal.x} ${normal.y} ${normal.z}\n`;
+                    stlContent += '    outer loop\n';
+                    stlContent += `      vertex ${v1.x} ${v1.y} ${v1.z}\n`;
+                    stlContent += `      vertex ${v2.x} ${v2.y} ${v2.z}\n`;
+                    stlContent += `      vertex ${v3.x} ${v3.y} ${v3.z}\n`;
+                    stlContent += '    endloop\n';
+                    stlContent += '  endfacet\n';
+                }
+            }
+
+            stlContent += 'endsolid vase\n';
+
+            return stlContent;
+        }
+
+        function exportSTL() {
+            const stlContent = generateSTL();
+            const blob = new Blob([stlContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'vaza.stl';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            // Анимация кнопки
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Готово!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
+
+        function resetToDefault() {
+            const defaults = {
+                'height': 200,
+                'base-diameter': 80,
+                'neck-diameter': 60,
+                'waist-diameter': 50,
+                'waist-position': 50,
+                'wall-thickness': 5,
+                'segments': 8,
+                'neck-profile': 'straight',
+                'surface-texture': 'smooth',
+                'preview-color': '#c9a86c'
+            };
+
+            for (const [id, value] of Object.entries(defaults)) {
+                const element = document.getElementById(id);
+                element.value = value;
+                
+                const valueDisplay = document.getElementById(id + '-value');
+                if (valueDisplay) {
+                    if (id.includes('diameter') || id.includes('height') || id.includes('thickness')) {
+                        valueDisplay.textContent = value + ' мм';
+                    } else if (id.includes('position')) {
+                        valueDisplay.textContent = value + '%';
+                    } else {
+                        valueDisplay.textContent = value;
+                    }
+                }
+            }
+
+            updateVase();
+        }
+
+        // Запуск приложения
+        init();
+    </script>
+</body>
+</html>
