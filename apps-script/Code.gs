@@ -5,6 +5,8 @@
  *  - ?action=health
  *  - ?action=content
  *  - ?action=experiments
+ *  - ?action=sessions
+ *  - ?action=dashboard
  *  - ?action=session&key=...
  *
  * POST:
@@ -118,6 +120,14 @@ function doGet(e) {
       return jsonResponse_({ ok: true, experiments: getExperimentsPayload_() });
     }
 
+    if (action === 'sessions') {
+      return jsonResponse_({ ok: true, sessions: getSessionsPayload_() });
+    }
+
+    if (action === 'dashboard') {
+      return jsonResponse_({ ok: true, dashboard: getDashboardPayload_() });
+    }
+
     if (action === 'session') {
       const participantKey = getParam_(e, 'key', '');
       if (!participantKey) {
@@ -173,7 +183,36 @@ function buildSiteContentPayload_() {
 
 function getExperimentsPayload_() {
   return rowsToObjectsSafe_(SHEET_EXPERIMENTS)
-    .filter(row => row && Object.values(row).some(value => String(value || '').trim() !== ''));
+    .filter(isNotEmptyRow_)
+    .sort(sortByDateDescField_('submittedAt'));
+}
+
+function getSessionsPayload_() {
+  const rows = rowsToObjectsSafe_(SHEET_SESSIONS).filter(isNotEmptyRow_);
+  return rows
+    .map(sessionToDashboard_)
+    .sort(sortByDateDescField_('updatedAt'));
+}
+
+function getDashboardPayload_() {
+  const sessions = getSessionsPayload_();
+  const experiments = getExperimentsPayload_();
+
+  const summary = {
+    totalSessions: sessions.length,
+    draftSessions: sessions.filter(row => row.status === 'draft').length,
+    submittedSessions: sessions.filter(row => row.status === 'submitted').length,
+    activeSessions: sessions.filter(row => row.status !== 'submitted').length,
+    totalExperiments: experiments.length,
+    uniqueStudents: uniqueCount_(sessions.map(row => row.studentName || '')),
+    recentUpdates24h: sessions.filter(row => isWithinHours_(row.updatedAt, 24)).length
+  };
+
+  return {
+    summary: summary,
+    sessions: sessions,
+    experiments: experiments.slice(0, 200)
+  };
 }
 
 function getSessionPayload_(participantKey) {
@@ -450,6 +489,38 @@ function sessionToClient_(row) {
   };
 }
 
+function sessionToDashboard_(row) {
+  const client = sessionToClient_(row);
+  const draft = client.draft || {};
+  const completeness = calculateDraftCompleteness_(draft);
+  return {
+    participantKey: client.participantKey,
+    createdAt: client.createdAt,
+    updatedAt: client.updatedAt,
+    status: client.status,
+    studentName: client.studentName,
+    groupName: client.groupName,
+    variantCode: client.variantCode,
+    taskTitle: client.taskTitle,
+    currentStep: client.currentStep,
+    sampleId: draft.sampleId || '',
+    printerModel: draft.printerModel || '',
+    shrinkageIntegral: draft.shrinkageIntegral || '',
+    completenessPercent: completeness,
+    draft: draft
+  };
+}
+
+function calculateDraftCompleteness_(draft) {
+  const importantFields = [
+    'studentName','groupName','experimentDate','variantCode','printerModel','scannerModel',
+    'materialName','nozzleTemperature','bedTemperature','printSpeed','layerHeight',
+    'cadX','factX','cadY','factY','cadZ','factZ'
+  ];
+  const filled = importantFields.filter(field => String(draft[field] || '').trim() !== '').length;
+  return Math.round((filled / importantFields.length) * 100);
+}
+
 function pickTask_() {
   const sheet = getOrCreateSheet_(SHEET_SESSIONS);
   const sessionsCount = Math.max(sheet.getLastRow() - 1, 0);
@@ -497,10 +568,33 @@ function isTrue_(value) {
   return normalized === 'true' || normalized === '1' || normalized === 'yes' || normalized === 'да';
 }
 
+function isNotEmptyRow_(row) {
+  return row && Object.values(row).some(value => String(value || '').trim() !== '');
+}
+
 function sortByNumericField_(fieldName) {
   return function(a, b) {
     return Number(a[fieldName] || 0) - Number(b[fieldName] || 0);
   };
+}
+
+function sortByDateDescField_(fieldName) {
+  return function(a, b) {
+    return String(b[fieldName] || '').localeCompare(String(a[fieldName] || ''));
+  };
+}
+
+function uniqueCount_(values) {
+  const filtered = values.filter(value => String(value || '').trim() !== '');
+  return Array.from(new Set(filtered)).length;
+}
+
+function isWithinHours_(isoString, hours) {
+  if (!isoString) return false;
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return false;
+  const diffMs = new Date().getTime() - date.getTime();
+  return diffMs <= hours * 60 * 60 * 1000;
 }
 
 function jsonResponse_(data) {
