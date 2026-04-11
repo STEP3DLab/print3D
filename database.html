@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Step3D.Lab - Преподавательский режим</title>
-<meta name="description" content="Панель преподавателя Step3D.Lab для контроля сессий и записей экспериментов.">
+<title>Step3D.Lab - Кабинет и база</title>
+<meta name="description" content="Кабинет администратора и личные записи Step3D.Lab.">
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--text:#0f172a;--muted:#667085;--line:rgba(15,23,42,.08);--accent:#2563eb;--accent-soft:rgba(37,99,235,.08);--ok:#059669;--warn:#b45309;--err:#dc2626;--shadow:0 18px 50px rgba(15,23,42,.06);--radius:24px;--max:1240px}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#f7f9fc 0,#edf3ff 100%)}a{text-decoration:none;color:inherit}.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}.top{position:sticky;top:0;z-index:30;background:rgba(246,247,251,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}.logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7aa2ff);box-shadow:0 12px 26px rgba(37,99,235,.20)}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{min-height:42px;padding:0 14px;border-radius:14px;background:#fff;border:1px solid var(--line);display:inline-flex;align-items:center;font-weight:700}.hero{padding:34px 0 16px}.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:16px}.card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-copy{padding:26px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid rgba(37,99,235,.12);color:var(--accent);font-size:14px;margin-bottom:12px}h1{margin:0 0 12px;font-size:clamp(2rem,4vw,3.2rem);line-height:.96;letter-spacing:-.06em}.lead{margin:0;color:var(--muted);line-height:1.74}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.stat{padding:14px;border-radius:18px;background:#fbfcff;border:1px solid var(--line)}.stat span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.stat strong{letter-spacing:-.03em}.side{padding:18px}.side h3{margin:0 0 10px}.side p{margin:0;color:var(--muted);line-height:1.68}.section{padding:16px 0}.toolbar{padding:16px;display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto;gap:12px;align-items:end}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:600}.field input,.field select{width:100%;min-height:46px;border-radius:14px;border:1px solid rgba(15,23,42,.12);background:#fff;padding:12px 14px;color:var(--text)}.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.08)}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tabs button{min-height:42px;padding:0 14px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}.tabs button.active{background:var(--accent-soft);border-color:rgba(37,99,235,.12);color:var(--accent)}.panel{display:none}.panel.active{display:block}.table-card{padding:12px}.table-wrap{overflow:auto;border-radius:18px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;min-width:1180px}th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;color:var(--muted);font-weight:700;background:#fbfcff;position:sticky;top:0}td{font-size:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}.chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;color:var(--muted)}.chip.ok{color:var(--ok);background:#ecfdf5;border-color:#d1fae5}.chip.warn{color:var(--warn);background:#fff7ed;border-color:#fed7aa}.chip.err{color:var(--err);background:#fef2f2;border-color:#fecaca}.issues{display:flex;flex-wrap:wrap;gap:6px}.cards{display:none;gap:12px}.record{padding:18px}.record h3{margin:0 0 8px;font-size:1rem;letter-spacing:-.03em}.record p{margin:0;color:var(--muted);line-height:1.68}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.empty{padding:24px;text-align:center;color:var(--muted)}.footer{padding:24px 0 46px;color:var(--muted)}.footer .card{padding:18px 20px}@media (max-width:980px){.hero-grid,.stats,.toolbar,.record-grid{grid-template-columns:1fr}.table-card{display:none}.cards{display:grid}.nav{display:none}}
+:root{--bg:#f6f7fb;--card:#fff;--text:#0f172a;--muted:#667085;--line:rgba(15,23,42,.08);--accent:#2563eb;--accent-soft:rgba(37,99,235,.08);--ok:#059669;--warn:#b45309;--err:#dc2626;--shadow:0 18px 50px rgba(15,23,42,.06);--radius:24px;--max:1240px}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#f7f9fc 0,#edf3ff 100%)}a{text-decoration:none;color:inherit}button,input,select{font:inherit}.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}.top{position:sticky;top:0;z-index:30;background:rgba(246,247,251,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}.logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7aa2ff);box-shadow:0 12px 26px rgba(37,99,235,.20)}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{min-height:42px;padding:0 14px;border-radius:14px;background:#fff;border:1px solid var(--line);display:inline-flex;align-items:center;font-weight:700}.hero{padding:30px 0 14px}.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:16px}.card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-copy{padding:26px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid rgba(37,99,235,.12);color:var(--accent);font-size:14px;margin-bottom:12px}h1{margin:0 0 12px;font-size:clamp(2rem,4vw,3.1rem);line-height:.96;letter-spacing:-.06em}.lead{margin:0;color:var(--muted);line-height:1.74}.card h3{margin:0 0 8px}.card p{margin:0;color:var(--muted);line-height:1.68}.section{padding:14px 0}.access{display:grid;grid-template-columns:1fr 1fr;gap:16px}.block{padding:20px}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:600}.field input,.field select{width:100%;min-height:46px;border-radius:14px;border:1px solid rgba(15,23,42,.12);background:#fff;padding:12px 14px;color:var(--text)}.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.08)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}.btn.primary{background:var(--accent);border-color:transparent;color:#fff}.btn.full{width:100%;margin-top:14px}.hint{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.65}.status{padding:14px 16px}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.stat{padding:14px;border-radius:18px;background:#fbfcff;border:1px solid var(--line)}.stat span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.stat strong{letter-spacing:-.03em}.toolbar{padding:16px;display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto auto;gap:12px;align-items:end}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tabs button{min-height:42px;padding:0 14px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}.tabs button.active{background:var(--accent-soft);border-color:rgba(37,99,235,.12);color:var(--accent)}.panel{display:none}.panel.active{display:block}.table-card{padding:12px}.table-wrap{overflow:auto;border-radius:18px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;min-width:1100px}th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;color:var(--muted);font-weight:700;background:#fbfcff;position:sticky;top:0}td{font-size:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}.chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;color:var(--muted)}.chip.ok{color:var(--ok);background:#ecfdf5;border-color:#d1fae5}.chip.warn{color:var(--warn);background:#fff7ed;border-color:#fed7aa}.chip.err{color:var(--err);background:#fef2f2;border-color:#fecaca}.issues{display:flex;flex-wrap:wrap;gap:6px}.cards{display:none;gap:12px}.record{padding:18px}.record h3{margin:0 0 8px;font-size:1rem;letter-spacing:-.03em}.record p{margin:0;color:var(--muted);line-height:1.68}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.empty{padding:24px;text-align:center;color:var(--muted)}.hidden{display:none!important}.footer{padding:24px 0 46px;color:var(--muted)}.footer .card{padding:18px 20px}@media (max-width:980px){.hero-grid,.access,.stats,.toolbar,.grid2,.record-grid{grid-template-columns:1fr}.table-card{display:none}.cards{display:grid}.nav{display:none}}
 </style>
 </head>
 <body>
@@ -16,146 +16,146 @@
     <nav class="nav">
       <a href="index.html">Участие</a>
       <a href="lab.html">Лабораторная</a>
-      <a href="database.html">Преподаватель</a>
+      <a href="database.html">Кабинет и база</a>
     </nav>
   </div>
 </header>
+
 <main class="wrap">
   <section class="hero">
     <div class="hero-grid">
       <div class="card hero-copy">
-        <div class="eyebrow">Преподавательский режим</div>
-        <h1>Контроль сессий, записей и качества данных</h1>
-        <p class="lead">Панель показывает, кто получил задание, кто еще не завершил черновик, какие записи уже сданы и где не хватает материалов для исследовательской полноты.</p>
-        <div class="stats">
-          <div class="stat"><span>Всего сессий</span><strong id="totalSessions">0</strong></div>
-          <div class="stat"><span>Черновики</span><strong id="draftSessions">0</strong></div>
-          <div class="stat"><span>Отправлено</span><strong id="submittedSessions">0</strong></div>
-          <div class="stat"><span>Записей</span><strong id="totalExperiments">0</strong></div>
-          <div class="stat"><span>Проблемных</span><strong id="problemExperiments">0</strong></div>
-        </div>
+        <div class="eyebrow">Кабинет и база данных</div>
+        <h1>Управляйте экспериментом и смотрите личные записи.</h1>
+        <p class="lead">Здесь два сценария: преподаватель входит по логину и паролю и получает полный кабинет контроля, а студент или исследователь может открыть свои записи по индивидуальному ключу участника.</p>
       </div>
-      <aside class="card side">
-        <h3>Что видно сразу</h3>
-        <p>Можно быстро найти незавершенные черновики, записи без фото, без карты отклонений, без отчета scan-to-CAD и отдельно просмотреть проблемные записи, требующие доработки.</p>
-      </aside>
+      <div class="card block">
+        <h3>Как это работает</h3>
+        <p>Администратор работает через лист admin_users и пароль, а личные записи открываются по participantKey. Все данные продолжают храниться в Google Sheets и выдаются через Apps Script.</p>
+      </div>
     </div>
   </section>
 
   <section class="section">
+    <div class="access">
+      <div class="card block">
+        <h3>Вход администратора</h3>
+        <div class="grid2">
+          <div class="field"><label for="adminLogin">Логин</label><input id="adminLogin" type="text" placeholder="admin"></div>
+          <div class="field"><label for="adminPassword">Пароль</label><input id="adminPassword" type="password" placeholder="••••••••"></div>
+        </div>
+        <button id="adminLoginBtn" class="btn primary full" type="button">Войти в кабинет</button>
+        <div id="adminAuthHint" class="hint">Для теста добавьте администратора в лист <span class="mono">admin_users</span>.</div>
+      </div>
+      <div class="card block">
+        <h3>Личные записи по ключу</h3>
+        <div class="field"><label for="personalKey">participantKey</label><input id="personalKey" type="text" placeholder="S3D-240101-ABC123"></div>
+        <button id="personalLookupBtn" class="btn full" type="button">Открыть мои записи</button>
+        <div class="hint">Этот режим не требует пароля. Он показывает только данные, связанные с указанным ключом участника.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div id="statusLine" class="card status">Ожидание входа или поиска по ключу.</div>
+  </section>
+
+  <section id="adminArea" class="section hidden">
+    <div class="card block" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+        <div>
+          <h3 id="adminTitle">Кабинет администратора</h3>
+          <p id="adminMeta">—</p>
+        </div>
+        <button id="adminLogoutBtn" class="btn" type="button">Выйти</button>
+      </div>
+      <div class="stats" style="margin-top:16px">
+        <div class="stat"><span>Всего сессий</span><strong id="totalSessions">0</strong></div>
+        <div class="stat"><span>Черновики</span><strong id="draftSessions">0</strong></div>
+        <div class="stat"><span>Отправлено</span><strong id="submittedSessions">0</strong></div>
+        <div class="stat"><span>Записей</span><strong id="totalExperiments">0</strong></div>
+        <div class="stat"><span>Проблемных</span><strong id="problemExperiments">0</strong></div>
+      </div>
+    </div>
+
     <div class="card toolbar">
       <div class="field"><label for="searchInput">Поиск</label><input id="searchInput" type="text" placeholder="ФИО, ключ, sample_id, группа"></div>
       <div class="field"><label for="statusFilter">Статус</label><select id="statusFilter"><option value="">Все</option><option value="draft">Черновик</option><option value="submitted">Отправлено</option></select></div>
       <div class="field"><label for="groupFilter">Группа</label><select id="groupFilter"><option value="">Все</option></select></div>
       <div class="field"><label for="issueFilter">Проблема</label><select id="issueFilter"><option value="">Все</option><option value="missing_photo">Без фото</option><option value="missing_map">Без карты</option><option value="missing_report">Без отчета</option><option value="problem_only">Только проблемные</option><option value="complete">Полные записи</option></select></div>
       <button id="refreshBtn" class="btn" type="button">Обновить</button>
+      <button id="clearFiltersBtn" class="btn" type="button">Сбросить</button>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="tabs">
-      <button id="tabSessions" class="active" type="button">Сессии</button>
-      <button id="tabExperiments" type="button">Записи</button>
-      <button id="tabProblems" type="button">Проблемные</button>
-    </div>
-    <div id="statusLine" class="card" style="padding:14px 16px;color:#667085">Загрузка панели...</div>
-  </section>
-
-  <section id="sessionsPanel" class="section panel active">
-    <div class="card table-card">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Участник</th>
-              <th>Ключ</th>
-              <th>Вариант</th>
-              <th>Статус</th>
-              <th>Шаг</th>
-              <th>Полнота</th>
-              <th>Обновлено</th>
-            </tr>
-          </thead>
-          <tbody id="sessionsTable"></tbody>
-        </table>
+    <div class="section">
+      <div class="tabs">
+        <button id="tabSessions" class="active" type="button">Сессии</button>
+        <button id="tabExperiments" type="button">Записи</button>
+        <button id="tabProblems" type="button">Проблемные</button>
       </div>
     </div>
-    <div id="sessionsCards" class="cards"></div>
+
+    <section id="sessionsPanel" class="section panel active">
+      <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Участник</th><th>Ключ</th><th>Вариант</th><th>Статус</th><th>Шаг</th><th>Полнота</th><th>Обновлено</th></tr></thead><tbody id="sessionsTable"></tbody></table></div></div>
+      <div id="sessionsCards" class="cards"></div>
+    </section>
+
+    <section id="experimentsPanel" class="section panel">
+      <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Дата</th><th>Участник</th><th>sample_id</th><th>Вариант</th><th>Усадка</th><th>Качество</th><th>Проблемы</th></tr></thead><tbody id="experimentsTable"></tbody></table></div></div>
+      <div id="experimentsCards" class="cards"></div>
+    </section>
+
+    <section id="problemsPanel" class="section panel">
+      <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Участник</th><th>sample_id</th><th>Фото</th><th>Карта</th><th>Отчет</th><th>Сводка</th></tr></thead><tbody id="problemsTable"></tbody></table></div></div>
+      <div id="problemsCards" class="cards"></div>
+    </section>
   </section>
 
-  <section id="experimentsPanel" class="section panel">
-    <div class="card table-card">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Дата</th>
-              <th>Участник</th>
-              <th>sample_id</th>
-              <th>Вариант</th>
-              <th>Усадка</th>
-              <th>Качество записи</th>
-              <th>Проблемы</th>
-            </tr>
-          </thead>
-          <tbody id="experimentsTable"></tbody>
-        </table>
-      </div>
+  <section id="personalArea" class="section hidden">
+    <div class="card block" style="margin-bottom:14px">
+      <h3>Личный кабинет по ключу</h3>
+      <p id="personalSummary">—</p>
+      <div id="personalMeta" class="hint">—</div>
     </div>
-    <div id="experimentsCards" class="cards"></div>
-  </section>
-
-  <section id="problemsPanel" class="section panel">
-    <div class="card table-card">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Участник</th>
-              <th>sample_id</th>
-              <th>Фото</th>
-              <th>Карта</th>
-              <th>Отчет</th>
-              <th>Сводка</th>
-            </tr>
-          </thead>
-          <tbody id="problemsTable"></tbody>
-        </table>
-      </div>
-    </div>
-    <div id="problemsCards" class="cards"></div>
+    <div id="personalRecords" class="cards" style="display:grid"></div>
   </section>
 
   <footer class="footer">
-    <div class="card">Step3D.Lab • Панель преподавателя</div>
+    <div class="card">Step3D.Lab • Кабинет и база данных</div>
   </footer>
 </main>
+
 <script>
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbzv3_dlEaWzyDSIKaP6fQ6OM_6sFfD3R8Oo5sjvghRvaKLbVwfCgBfKYQxRNlBdWdmqWw/exec';
-const state={sessions:[],experiments:[],problemExperiments:[],filteredSessions:[],filteredExperiments:[],filteredProblems:[]};
+const ADMIN_TOKEN_KEY='STEP3DLAB_ADMIN_TOKEN';
+const state={admin:null,sessions:[],experiments:[],problemExperiments:[],filteredSessions:[],filteredExperiments:[],filteredProblems:[]};
+const statusLine=document.getElementById('statusLine');
 const searchInput=document.getElementById('searchInput');
 const statusFilter=document.getElementById('statusFilter');
 const groupFilter=document.getElementById('groupFilter');
 const issueFilter=document.getElementById('issueFilter');
-const statusLine=document.getElementById('statusLine');
 function setStatus(text){statusLine.textContent=text;}
-function chipStatus(status){if(status==='submitted') return '<span class="chip ok">Отправлено</span>'; if(status==='draft') return '<span class="chip warn">Черновик</span>'; return `<span class="chip">${status||'-'}</span>`;}
-function completenessChip(value){const n=Number(value||0); if(n>=80) return `<span class="chip ok">${n}%</span>`; if(n>=40) return `<span class="chip warn">${n}%</span>`; return `<span class="chip err">${n}%</span>`;}
 function safe(v){return v===undefined||v===null?'':String(v);}
 function uniq(values){return [...new Set(values.filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ru'));}
-function isLink(v){return /^https?:\/\//i.test(safe(v));}
-function analyzeIssues(row){const missingPhoto=!isLink(row.photoLink);const missingMap=!isLink(row.deviationMapLink);const missingReport=!isLink(row.scanReportLink);const problems=[];if(missingPhoto) problems.push('Нет фото');if(missingMap) problems.push('Нет карты');if(missingReport) problems.push('Нет отчета');return{missingPhoto,missingMap,missingReport,isProblem:problems.length>0,problems};}
-function issueBadges(info){if(!info.problems.length) return '<span class="chip ok">Полная запись</span>';return `<div class="issues">${info.problems.map(p=>`<span class="chip err">${p}</span>`).join('')}</div>`;}
-function qualityLabel(info){const missing=info.problems.length;if(missing===0) return '<span class="chip ok">Полная</span>';if(missing===1) return '<span class="chip warn">Нужно 1 вложение</span>';return `<span class="chip err">Нужно ${missing} вложения</span>`;}
+function chipStatus(status){if(status==='submitted') return '<span class="chip ok">Отправлено</span>'; if(status==='draft') return '<span class="chip warn">Черновик</span>'; return `<span class="chip">${status||'-'}</span>`;}
+function completenessChip(value){const n=Number(value||0);if(n>=80)return `<span class="chip ok">${n}%</span>`;if(n>=40)return `<span class="chip warn">${n}%</span>`;return `<span class="chip err">${n}%</span>`;}
+function qualityLabel(info){const missing=info.issues.length;if(missing===0)return '<span class="chip ok">Полная</span>';if(missing===1)return '<span class="chip warn">Нужно 1 вложение</span>';return `<span class="chip err">Нужно ${missing} вложения</span>`;}
+function issueBadges(info){if(!info.issues.length)return '<span class="chip ok">Полная запись</span>';return `<div class="issues">${info.issues.map(p=>`<span class="chip err">${p}</span>`).join('')}</div>`;}
 function renderGroupFilter(){const groups=uniq(state.sessions.map(s=>safe(s.groupName)).concat(state.experiments.map(e=>safe(e.groupName))));groupFilter.innerHTML='<option value="">Все</option>'+groups.map(g=>`<option value="${g.replace(/"/g,'&quot;')}">${g}</option>`).join('');}
-function updateSummary(summary){document.getElementById('totalSessions').textContent=summary.totalSessions||0;document.getElementById('draftSessions').textContent=summary.draftSessions||0;document.getElementById('submittedSessions').textContent=summary.submittedSessions||0;document.getElementById('totalExperiments').textContent=summary.totalExperiments||0;document.getElementById('problemExperiments').textContent=state.problemExperiments.length||0;}
-function matchesIssueFilter(info){const f=issueFilter.value;if(!f) return true;if(f==='missing_photo') return info.missingPhoto;if(f==='missing_map') return info.missingMap;if(f==='missing_report') return info.missingReport;if(f==='problem_only') return info.isProblem;if(f==='complete') return !info.isProblem;return true;}
-function applyFilters(){const q=searchInput.value.trim().toLowerCase();const st=statusFilter.value;const gr=groupFilter.value;state.filteredSessions=state.sessions.filter(row=>{const hay=[row.studentName,row.groupName,row.participantKey,row.sampleId,row.variantCode,row.taskTitle].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!st||row.status===st)&&(!gr||row.groupName===gr);});state.filteredExperiments=state.experiments.filter(row=>{const info=row._issues;const hay=[row.studentName,row.groupName,row.participantKey,row.sampleId,row.variantCode,row.printerModel].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!gr||row.groupName===gr)&&matchesIssueFilter(info);});state.filteredProblems=state.problemExperiments.filter(row=>{const info=row._issues;const hay=[row.studentName,row.groupName,row.participantKey,row.sampleId,row.variantCode,row.printerModel].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!gr||row.groupName===gr)&&matchesIssueFilter(info);});renderSessions();renderExperiments();renderProblems();setStatus(`Сессий: ${state.filteredSessions.length} • Записей: ${state.filteredExperiments.length} • Проблемных: ${state.filteredProblems.length}`);}
+function updateSummary(summary){document.getElementById('totalSessions').textContent=summary.totalSessions||0;document.getElementById('draftSessions').textContent=summary.draftSessions||0;document.getElementById('submittedSessions').textContent=summary.submittedSessions||0;document.getElementById('totalExperiments').textContent=summary.totalExperiments||0;document.getElementById('problemExperiments').textContent=summary.problemExperiments||0;}
+function matchesIssueFilter(info){const f=issueFilter.value;if(!f)return true;if(f==='missing_photo')return info.missingPhoto;if(f==='missing_map')return info.missingMap;if(f==='missing_report')return info.missingReport;if(f==='problem_only')return info.hasIssues;if(f==='complete')return !info.hasIssues;return true;}
+function applyFilters(){const q=searchInput.value.trim().toLowerCase();const st=statusFilter.value;const gr=groupFilter.value;state.filteredSessions=state.sessions.filter(row=>{const hay=[row.studentName,row.groupName,row.participantKey,row.sampleId,row.variantCode,row.taskTitle].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!st||row.status===st)&&(!gr||row.groupName===gr);});state.filteredExperiments=state.experiments.filter(row=>{const info={issues:row.issues||[],missingPhoto:row.missingPhoto,missingMap:row.missingMap,missingReport:row.missingReport,hasIssues:row.hasIssues};const hay=[row.studentName,row.groupName,row.participantKey,row.sampleId,row.variantCode,row.printerModel].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!gr||row.groupName===gr)&&matchesIssueFilter(info);});state.filteredProblems=state.problemExperiments.filter(row=>{const info={issues:row.issues||[],missingPhoto:row.missingPhoto,missingMap:row.missingMap,missingReport:row.missingReport,hasIssues:row.hasIssues};const hay=[row.studentName,row.groupName,row.participantKey,row.sampleId,row.variantCode,row.printerModel].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!gr||row.groupName===gr)&&matchesIssueFilter(info);});renderSessions();renderExperiments();renderProblems();setStatus(`Сессий: ${state.filteredSessions.length} • Записей: ${state.filteredExperiments.length} • Проблемных: ${state.filteredProblems.length}`);}
 function renderSessions(){const table=document.getElementById('sessionsTable');const cards=document.getElementById('sessionsCards');if(!state.filteredSessions.length){table.innerHTML='<tr><td colspan="7" class="empty">Нет данных</td></tr>';cards.innerHTML='<div class="card empty">Нет данных</div>';return;}table.innerHTML=state.filteredSessions.map(row=>`<tr><td><strong>${safe(row.studentName)||'Без имени'}</strong><div style="color:#667085">${safe(row.groupName)||'Без группы'}</div></td><td><span class="mono">${safe(row.participantKey)||'-'}</span></td><td>${safe(row.variantCode)||'-'}</td><td>${chipStatus(row.status)}</td><td>${safe(row.currentStep)||'-'}</td><td>${completenessChip(row.completenessPercent)}</td><td>${safe(row.updatedAt)||'-'}</td></tr>`).join('');cards.innerHTML=state.filteredSessions.map(row=>`<article class="card record"><h3>${safe(row.studentName)||'Без имени'}</h3><p>${safe(row.groupName)||'Без группы'} • ${safe(row.variantCode)||'-'}</p><div class="record-grid"><div><span style="color:#667085">Ключ</span><div class="mono">${safe(row.participantKey)||'-'}</div></div><div><span style="color:#667085">Статус</span><div>${chipStatus(row.status)}</div></div><div><span style="color:#667085">Шаг</span><div>${safe(row.currentStep)||'-'}</div></div><div><span style="color:#667085">Полнота</span><div>${completenessChip(row.completenessPercent)}</div></div></div></article>`).join('');}
-function renderExperiments(){const table=document.getElementById('experimentsTable');const cards=document.getElementById('experimentsCards');if(!state.filteredExperiments.length){table.innerHTML='<tr><td colspan="7" class="empty">Нет данных</td></tr>';cards.innerHTML='<div class="card empty">Нет данных</div>';return;}table.innerHTML=state.filteredExperiments.map(row=>{const info=row._issues;return `<tr><td>${safe(row.experimentDate||row.submittedAt)||'-'}</td><td><strong>${safe(row.studentName)||'Без имени'}</strong><div style="color:#667085">${safe(row.groupName)||'Без группы'}</div></td><td><span class="mono">${safe(row.sampleId)||'-'}</span></td><td>${safe(row.variantCode)||'-'}</td><td>${row.shrinkageIntegral!==''&&row.shrinkageIntegral!==undefined?`${Number(row.shrinkageIntegral).toFixed(3)} %`:'-'}</td><td>${qualityLabel(info)}</td><td>${issueBadges(info)}</td></tr>`;}).join('');cards.innerHTML=state.filteredExperiments.map(row=>{const info=row._issues;return `<article class="card record"><h3>${safe(row.studentName)||'Без имени'}</h3><p>${safe(row.experimentDate||row.submittedAt)||'-'} • ${safe(row.groupName)||'Без группы'}</p><div class="record-grid"><div><span style="color:#667085">sample_id</span><div class="mono">${safe(row.sampleId)||'-'}</div></div><div><span style="color:#667085">Усадка</span><div>${row.shrinkageIntegral!==''&&row.shrinkageIntegral!==undefined?`${Number(row.shrinkageIntegral).toFixed(3)} %`:'-'}</div></div><div><span style="color:#667085">Качество</span><div>${qualityLabel(info)}</div></div><div><span style="color:#667085">Проблемы</span><div>${issueBadges(info)}</div></div></div></article>`;}).join('');}
-function renderProblems(){const table=document.getElementById('problemsTable');const cards=document.getElementById('problemsCards');if(!state.filteredProblems.length){table.innerHTML='<tr><td colspan="6" class="empty">Проблемных записей нет</td></tr>';cards.innerHTML='<div class="card empty">Проблемных записей нет</div>';return;}table.innerHTML=state.filteredProblems.map(row=>{const info=row._issues;return `<tr><td><strong>${safe(row.studentName)||'Без имени'}</strong><div style="color:#667085">${safe(row.groupName)||'Без группы'}</div></td><td><span class="mono">${safe(row.sampleId)||'-'}</span></td><td>${info.missingPhoto?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</td><td>${info.missingMap?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</td><td>${info.missingReport?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</td><td>${issueBadges(info)}</td></tr>`;}).join('');cards.innerHTML=state.filteredProblems.map(row=>{const info=row._issues;return `<article class="card record"><h3>${safe(row.studentName)||'Без имени'}</h3><p>${safe(row.groupName)||'Без группы'} • ${safe(row.variantCode)||'-'}</p><div class="record-grid"><div><span style="color:#667085">sample_id</span><div class="mono">${safe(row.sampleId)||'-'}</div></div><div><span style="color:#667085">Сводка</span><div>${issueBadges(info)}</div></div><div><span style="color:#667085">Фото</span><div>${info.missingPhoto?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</div></div><div><span style="color:#667085">Карта / отчет</span><div>${info.missingMap?'<span class="chip err">Нет карты</span>':'<span class="chip ok">Карта есть</span>'} ${info.missingReport?'<span class="chip err">Нет отчета</span>':'<span class="chip ok">Отчет есть</span>'}</div></div></div></article>`;}).join('');}
-async function loadDashboard(){try{setStatus('Загрузка панели...');const res=await fetch(`${APPS_SCRIPT_URL}?action=dashboard`);const data=await res.json();if(!data.ok) throw new Error(data.error||'Ошибка');const dash=data.dashboard||{};state.sessions=Array.isArray(dash.sessions)?dash.sessions:[];state.experiments=(Array.isArray(dash.experiments)?dash.experiments:[]).map(row=>Object.assign({},row,{_issues:analyzeIssues(row)}));state.problemExperiments=state.experiments.filter(row=>row._issues.isProblem);updateSummary(dash.summary||{});renderGroupFilter();applyFilters();}catch(error){console.error(error);setStatus('Не удалось загрузить панель преподавателя');}}
-document.getElementById('tabSessions').addEventListener('click',()=>{document.getElementById('tabSessions').classList.add('active');document.getElementById('tabExperiments').classList.remove('active');document.getElementById('tabProblems').classList.remove('active');document.getElementById('sessionsPanel').classList.add('active');document.getElementById('experimentsPanel').classList.remove('active');document.getElementById('problemsPanel').classList.remove('active');});document.getElementById('tabExperiments').addEventListener('click',()=>{document.getElementById('tabExperiments').classList.add('active');document.getElementById('tabSessions').classList.remove('active');document.getElementById('tabProblems').classList.remove('active');document.getElementById('experimentsPanel').classList.add('active');document.getElementById('sessionsPanel').classList.remove('active');document.getElementById('problemsPanel').classList.remove('active');});document.getElementById('tabProblems').addEventListener('click',()=>{document.getElementById('tabProblems').classList.add('active');document.getElementById('tabSessions').classList.remove('active');document.getElementById('tabExperiments').classList.remove('active');document.getElementById('problemsPanel').classList.add('active');document.getElementById('sessionsPanel').classList.remove('active');document.getElementById('experimentsPanel').classList.remove('active');});searchInput.addEventListener('input',applyFilters);statusFilter.addEventListener('change',applyFilters);groupFilter.addEventListener('change',applyFilters);issueFilter.addEventListener('change',applyFilters);document.getElementById('refreshBtn').addEventListener('click',loadDashboard);document.addEventListener('DOMContentLoaded',loadDashboard);
+function renderExperiments(){const table=document.getElementById('experimentsTable');const cards=document.getElementById('experimentsCards');if(!state.filteredExperiments.length){table.innerHTML='<tr><td colspan="7" class="empty">Нет данных</td></tr>';cards.innerHTML='<div class="card empty">Нет данных</div>';return;}table.innerHTML=state.filteredExperiments.map(row=>{const info={issues:row.issues||[],missingPhoto:row.missingPhoto,missingMap:row.missingMap,missingReport:row.missingReport,hasIssues:row.hasIssues};return `<tr><td>${safe(row.experimentDate||row.submittedAt)||'-'}</td><td><strong>${safe(row.studentName)||'Без имени'}</strong><div style="color:#667085">${safe(row.groupName)||'Без группы'}</div></td><td><span class="mono">${safe(row.sampleId)||'-'}</span></td><td>${safe(row.variantCode)||'-'}</td><td>${row.shrinkageIntegral!==''&&row.shrinkageIntegral!==undefined?`${Number(row.shrinkageIntegral).toFixed(3)} %`:'-'}</td><td>${qualityLabel(info)}</td><td>${issueBadges(info)}</td></tr>`;}).join('');cards.innerHTML=state.filteredExperiments.map(row=>{const info={issues:row.issues||[],missingPhoto:row.missingPhoto,missingMap:row.missingMap,missingReport:row.missingReport,hasIssues:row.hasIssues};return `<article class="card record"><h3>${safe(row.studentName)||'Без имени'}</h3><p>${safe(row.experimentDate||row.submittedAt)||'-'} • ${safe(row.groupName)||'Без группы'}</p><div class="record-grid"><div><span style="color:#667085">sample_id</span><div class="mono">${safe(row.sampleId)||'-'}</div></div><div><span style="color:#667085">Усадка</span><div>${row.shrinkageIntegral!==''&&row.shrinkageIntegral!==undefined?`${Number(row.shrinkageIntegral).toFixed(3)} %`:'-'}</div></div><div><span style="color:#667085">Качество</span><div>${qualityLabel(info)}</div></div><div><span style="color:#667085">Проблемы</span><div>${issueBadges(info)}</div></div></div></article>`;}).join('');}
+function renderProblems(){const table=document.getElementById('problemsTable');const cards=document.getElementById('problemsCards');if(!state.filteredProblems.length){table.innerHTML='<tr><td colspan="6" class="empty">Проблемных записей нет</td></tr>';cards.innerHTML='<div class="card empty">Проблемных записей нет</div>';return;}table.innerHTML=state.filteredProblems.map(row=>{const info={issues:row.issues||[],missingPhoto:row.missingPhoto,missingMap:row.missingMap,missingReport:row.missingReport,hasIssues:row.hasIssues};return `<tr><td><strong>${safe(row.studentName)||'Без имени'}</strong><div style="color:#667085">${safe(row.groupName)||'Без группы'}</div></td><td><span class="mono">${safe(row.sampleId)||'-'}</span></td><td>${info.missingPhoto?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</td><td>${info.missingMap?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</td><td>${info.missingReport?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</td><td>${issueBadges(info)}</td></tr>`;}).join('');cards.innerHTML=state.filteredProblems.map(row=>{const info={issues:row.issues||[],missingPhoto:row.missingPhoto,missingMap:row.missingMap,missingReport:row.missingReport,hasIssues:row.hasIssues};return `<article class="card record"><h3>${safe(row.studentName)||'Без имени'}</h3><p>${safe(row.groupName)||'Без группы'} • ${safe(row.variantCode)||'-'}</p><div class="record-grid"><div><span style="color:#667085">sample_id</span><div class="mono">${safe(row.sampleId)||'-'}</div></div><div><span style="color:#667085">Сводка</span><div>${issueBadges(info)}</div></div><div><span style="color:#667085">Фото</span><div>${info.missingPhoto?'<span class="chip err">Нет</span>':'<span class="chip ok">Есть</span>'}</div></div><div><span style="color:#667085">Карта / отчет</span><div>${info.missingMap?'<span class="chip err">Нет карты</span>':'<span class="chip ok">Карта есть</span>'} ${info.missingReport?'<span class="chip err">Нет отчета</span>':'<span class="chip ok">Отчет есть</span>'}</div></div></div></article>`;}).join('');}
+async function adminLogin(){const login=document.getElementById('adminLogin').value.trim();const password=document.getElementById('adminPassword').value;if(!login||!password){setStatus('Введите логин и пароль администратора.');return;}setStatus('Проверка администратора...');const res=await fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'admin_login',login,password})});const data=await res.json();if(!data.ok) throw new Error(data.error||'Ошибка входа');localStorage.setItem(ADMIN_TOKEN_KEY,data.auth.token);await loadDashboard();}
+async function adminLogout(){const token=localStorage.getItem(ADMIN_TOKEN_KEY)||'';try{if(token){await fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'admin_logout',token})});}}catch(e){}localStorage.removeItem(ADMIN_TOKEN_KEY);state.admin=null;document.getElementById('adminArea').classList.add('hidden');setStatus('Вы вышли из кабинета администратора.');}
+async function loadDashboard(){const token=localStorage.getItem(ADMIN_TOKEN_KEY)||'';if(!token){setStatus('Для кабинета администратора нужен вход.');return;}setStatus('Загрузка кабинета администратора...');const res=await fetch(`${APPS_SCRIPT_URL}?action=dashboard&token=${encodeURIComponent(token)}`);const data=await res.json();if(!data.ok) throw new Error(data.error||'Не удалось загрузить кабинет');const dash=data.dashboard||{};state.admin=dash.admin||null;state.sessions=Array.isArray(dash.sessions)?dash.sessions:[];state.experiments=Array.isArray(dash.experiments)?dash.experiments:[];state.problemExperiments=Array.isArray(dash.problemExperiments)?dash.problemExperiments:[];document.getElementById('adminArea').classList.remove('hidden');document.getElementById('adminTitle').textContent=`Кабинет администратора: ${safe((dash.admin||{}).display_name)||'Администратор'}`;document.getElementById('adminMeta').textContent=`Логин: ${safe((dash.admin||{}).login)||'-'} • Роль: ${safe((dash.admin||{}).role)||'-'} • Сессия до: ${safe((dash.admin||{}).expiresAt)||'-'}`;updateSummary(dash.summary||{});renderGroupFilter();applyFilters();}
+async function loadPersonalCabinet(){const key=document.getElementById('personalKey').value.trim();if(!key){setStatus('Введите participantKey для просмотра личных записей.');return;}setStatus('Загрузка личных записей...');const res=await fetch(`${APPS_SCRIPT_URL}?action=my_records&key=${encodeURIComponent(key)}`);const data=await res.json();if(!data.ok) throw new Error(data.error||'Не удалось открыть личные записи');const personal=data.personal||{};document.getElementById('personalArea').classList.remove('hidden');const session=personal.session||null;document.getElementById('personalSummary').textContent=session?`Статус: ${safe(session.status)} • Вариант: ${safe(session.variantCode)} • Шаг: ${safe(session.currentStep)}`:'Сессия по этому ключу не найдена.';document.getElementById('personalMeta').textContent=`Ключ: ${safe(personal.participantKey)} • Отправленных записей: ${safe((personal.summary||{}).submissionsCount)}`;const container=document.getElementById('personalRecords');const rows=Array.isArray(personal.experiments)?personal.experiments:[];container.innerHTML=rows.length?rows.map(row=>`<article class="card record"><h3>${safe(row.studentName)||'Без имени'}</h3><p>${safe(row.experimentDate||row.submittedAt)||'-'} • ${safe(row.groupName)||'Без группы'}</p><div class="record-grid"><div><span style="color:#667085">sample_id</span><div class="mono">${safe(row.sampleId)||'-'}</div></div><div><span style="color:#667085">Усадка</span><div>${row.shrinkageIntegral!==''&&row.shrinkageIntegral!==undefined?`${Number(row.shrinkageIntegral).toFixed(3)} %`:'-'}</div></div><div><span style="color:#667085">Качество</span><div>${row.hasIssues?'<span class="chip warn">Есть недочеты</span>':'<span class="chip ok">Полная запись</span>'}</div></div><div><span style="color:#667085">Материалы</span><div>${row.issues&&row.issues.length?row.issues.join(', '):'Все на месте'}</div></div></div></article>`).join(''):'<div class="card empty">По этому ключу пока нет отправленных записей.</div>';setStatus(`Личный кабинет открыт для ключа ${key}.`);}
+function activateTab(name){['sessions','experiments','problems'].forEach(id=>{document.getElementById(id+'Panel').classList.toggle('active',id===name);document.getElementById('tab'+id.charAt(0).toUpperCase()+id.slice(1)).classList.toggle('active',id===name);});}
+function clearFilters(){searchInput.value='';statusFilter.value='';groupFilter.value='';issueFilter.value='';applyFilters();}
+async function tryRestoreAdmin(){const token=localStorage.getItem(ADMIN_TOKEN_KEY)||'';if(!token)return;try{await loadDashboard();}catch(error){localStorage.removeItem(ADMIN_TOKEN_KEY);setStatus('Сессия администратора истекла. Войдите снова.');}}
+document.getElementById('adminLoginBtn').addEventListener('click',()=>adminLogin().catch(e=>setStatus(e.message||'Ошибка входа')));document.getElementById('adminLogoutBtn').addEventListener('click',adminLogout);document.getElementById('personalLookupBtn').addEventListener('click',()=>loadPersonalCabinet().catch(e=>setStatus(e.message||'Ошибка поиска')));document.getElementById('refreshBtn').addEventListener('click',()=>loadDashboard().catch(e=>setStatus(e.message||'Ошибка обновления')));document.getElementById('clearFiltersBtn').addEventListener('click',clearFilters);searchInput.addEventListener('input',applyFilters);statusFilter.addEventListener('change',applyFilters);groupFilter.addEventListener('change',applyFilters);issueFilter.addEventListener('change',applyFilters);document.getElementById('tabSessions').addEventListener('click',()=>activateTab('sessions'));document.getElementById('tabExperiments').addEventListener('click',()=>activateTab('experiments'));document.getElementById('tabProblems').addEventListener('click',()=>activateTab('problems'));document.addEventListener('DOMContentLoaded',tryRestoreAdmin);
 </script>
 </body>
 </html>

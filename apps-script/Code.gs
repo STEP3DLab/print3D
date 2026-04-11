@@ -5,14 +5,18 @@
  *  - ?action=health
  *  - ?action=content
  *  - ?action=experiments
- *  - ?action=sessions
- *  - ?action=dashboard
  *  - ?action=session&key=...
+ *  - ?action=my_records&key=...
+ *  - ?action=dashboard&token=...
+ *  - ?action=sessions&token=...
+ *  - ?action=admin_me&token=...
  *
  * POST:
  *  - { action: 'create_session', studentName, groupName }
  *  - { action: 'save_session', participantKey, currentStep, draft }
  *  - { action: 'submit_experiment', ...payload }
+ *  - { action: 'admin_login', login, password }
+ *  - { action: 'admin_logout', token }
  */
 
 const SHEET_CONTENT_SETTINGS = 'settings';
@@ -24,6 +28,8 @@ const SHEET_NAV = 'nav';
 const SHEET_MEDIA = 'media';
 const SHEET_EXPERIMENTS = 'experiments';
 const SHEET_SESSIONS = 'sessions';
+const SHEET_ADMIN_USERS = 'admin_users';
+const SHEET_ADMIN_SESSIONS = 'admin_sessions';
 
 const SESSION_HEADERS = [
   'participantKey','createdAt','updatedAt','status','studentName','groupName',
@@ -41,6 +47,16 @@ const EXPERIMENT_HEADERS = [
   'meanDeviation','meanAbsDeviation','rmsDeviation','maxPositiveDeviation','maxNegativeDeviation','toleranceRatio',
   'photoLink','deviationMapLink','gcodeLink','scanReportLink','notes','platform','stlFolder'
 ];
+
+const ADMIN_USER_HEADERS = [
+  'login','password_hash','password_plain','display_name','role','is_active','notes'
+];
+
+const ADMIN_SESSION_HEADERS = [
+  'token','login','display_name','role','createdAt','expiresAt','is_active'
+];
+
+const ADMIN_SESSION_HOURS = 12;
 
 const TASK_CATALOG = [
   {
@@ -120,20 +136,35 @@ function doGet(e) {
       return jsonResponse_({ ok: true, experiments: getExperimentsPayload_() });
     }
 
-    if (action === 'sessions') {
-      return jsonResponse_({ ok: true, sessions: getSessionsPayload_() });
-    }
-
-    if (action === 'dashboard') {
-      return jsonResponse_({ ok: true, dashboard: getDashboardPayload_() });
-    }
-
     if (action === 'session') {
       const participantKey = getParam_(e, 'key', '');
       if (!participantKey) {
         return jsonResponse_({ ok: false, error: 'Не передан ключ участника' });
       }
       return jsonResponse_({ ok: true, session: getSessionPayload_(participantKey) });
+    }
+
+    if (action === 'my_records') {
+      const participantKey = getParam_(e, 'key', '');
+      if (!participantKey) {
+        return jsonResponse_({ ok: false, error: 'Не передан ключ участника' });
+      }
+      return jsonResponse_({ ok: true, personal: getPersonalCabinetPayload_(participantKey) });
+    }
+
+    if (action === 'dashboard') {
+      const token = getParam_(e, 'token', '');
+      return jsonResponse_({ ok: true, dashboard: getDashboardPayload_(token) });
+    }
+
+    if (action === 'sessions') {
+      const token = getParam_(e, 'token', '');
+      return jsonResponse_({ ok: true, sessions: getSessionsPayload_(token) });
+    }
+
+    if (action === 'admin_me') {
+      const token = getParam_(e, 'token', '');
+      return jsonResponse_({ ok: true, admin: requireAdminToken_(token) });
     }
 
     return jsonResponse_({ ok: false, error: 'Неизвестный action' });
@@ -157,6 +188,14 @@ function doPost(e) {
 
     if (action === 'submit_experiment') {
       return jsonResponse_(submitExperiment_(payload));
+    }
+
+    if (action === 'admin_login') {
+      return jsonResponse_({ ok: true, auth: adminLogin_(payload) });
+    }
+
+    if (action === 'admin_logout') {
+      return jsonResponse_({ ok: true, result: adminLogout_(payload) });
     }
 
     return jsonResponse_({ ok: false, error: 'Неизвестный action' });
@@ -184,19 +223,26 @@ function buildSiteContentPayload_() {
 function getExperimentsPayload_() {
   return rowsToObjectsSafe_(SHEET_EXPERIMENTS)
     .filter(isNotEmptyRow_)
+    .map(addRecordQuality_)
     .sort(sortByDateDescField_('submittedAt'));
 }
 
-function getSessionsPayload_() {
+function getSessionsPayload_(token) {
+  requireAdminToken_(token);
   const rows = rowsToObjectsSafe_(SHEET_SESSIONS).filter(isNotEmptyRow_);
   return rows
     .map(sessionToDashboard_)
     .sort(sortByDateDescField_('updatedAt'));
 }
 
-function getDashboardPayload_() {
-  const sessions = getSessionsPayload_();
+function getDashboardPayload_(token) {
+  const admin = requireAdminToken_(token);
+  const sessions = rowsToObjectsSafe_(SHEET_SESSIONS)
+    .filter(isNotEmptyRow_)
+    .map(sessionToDashboard_)
+    .sort(sortByDateDescField_('updatedAt'));
   const experiments = getExperimentsPayload_();
+  const problemExperiments = experiments.filter(row => row.hasIssues);
 
   const summary = {
     totalSessions: sessions.length,
@@ -204,14 +250,39 @@ function getDashboardPayload_() {
     submittedSessions: sessions.filter(row => row.status === 'submitted').length,
     activeSessions: sessions.filter(row => row.status !== 'submitted').length,
     totalExperiments: experiments.length,
+    problemExperiments: problemExperiments.length,
     uniqueStudents: uniqueCount_(sessions.map(row => row.studentName || '')),
     recentUpdates24h: sessions.filter(row => isWithinHours_(row.updatedAt, 24)).length
   };
 
   return {
+    admin: admin,
     summary: summary,
     sessions: sessions,
-    experiments: experiments.slice(0, 200)
+    experiments: experiments.slice(0, 500),
+    problemExperiments: problemExperiments.slice(0, 500)
+  };
+}
+
+function getPersonalCabinetPayload_(participantKey) {
+  const sessionSheet = getOrCreateSheet_(SHEET_SESSIONS);
+  ensureHeaders_(sessionSheet, SESSION_HEADERS);
+  const sessionRow = getRowObjectByKey_(sessionSheet, 'participantKey', participantKey);
+  const session = sessionRow ? sessionToClient_(sessionRow) : null;
+
+  const experiments = getExperimentsPayload_()
+    .filter(row => String(row.participantKey || '').trim() === String(participantKey || '').trim())
+    .sort(sortByDateDescField_('submittedAt'));
+
+  return {
+    participantKey: participantKey,
+    session: session,
+    experiments: experiments,
+    summary: {
+      submissionsCount: experiments.length,
+      lastSubmittedAt: experiments.length ? experiments[0].submittedAt : '',
+      draftStatus: session ? session.status : 'not_found'
+    }
   };
 }
 
@@ -339,6 +410,143 @@ function submitExperiment_(payload) {
   };
 }
 
+function adminLogin_(payload) {
+  const usersSheet = getOrCreateSheet_(SHEET_ADMIN_USERS);
+  ensureHeaders_(usersSheet, ADMIN_USER_HEADERS);
+  const sessionsSheet = getOrCreateSheet_(SHEET_ADMIN_SESSIONS);
+  ensureHeaders_(sessionsSheet, ADMIN_SESSION_HEADERS);
+
+  const login = String(payload.login || '').trim();
+  const password = String(payload.password || '');
+  if (!login || !password) {
+    throw new Error('Введите логин и пароль');
+  }
+
+  const users = rowsToObjectsSafe_(SHEET_ADMIN_USERS).filter(isNotEmptyRow_);
+  if (!users.length) {
+    throw new Error('Лист admin_users пуст. Добавьте администратора в таблицу.');
+  }
+
+  const adminUser = users.find(function(row) {
+    return String(row.login || '').trim() === login && isActiveAdmin_(row);
+  });
+
+  if (!adminUser) {
+    throw new Error('Администратор не найден или отключен');
+  }
+
+  if (!isAdminPasswordValid_(adminUser, password)) {
+    throw new Error('Неверный пароль');
+  }
+
+  const token = generateAdminToken_();
+  const createdAt = new Date();
+  const expiresAt = new Date(createdAt.getTime() + ADMIN_SESSION_HOURS * 60 * 60 * 1000);
+  const session = {
+    token: token,
+    login: login,
+    display_name: adminUser.display_name || login,
+    role: adminUser.role || 'admin',
+    createdAt: createdAt.toISOString(),
+    expiresAt: expiresAt.toISOString(),
+    is_active: 'true'
+  };
+  appendObjectRow_(sessionsSheet, session);
+
+  return {
+    token: token,
+    admin: {
+      login: login,
+      display_name: adminUser.display_name || login,
+      role: adminUser.role || 'admin',
+      expiresAt: session.expiresAt
+    }
+  };
+}
+
+function adminLogout_(payload) {
+  const token = String(payload.token || '').trim();
+  if (!token) {
+    return { loggedOut: true };
+  }
+
+  const sheet = getOrCreateSheet_(SHEET_ADMIN_SESSIONS);
+  ensureHeaders_(sheet, ADMIN_SESSION_HEADERS);
+  const rowIndex = findRowIndexByKey_(sheet, 'token', token);
+  if (rowIndex !== -1) {
+    const row = getRowObjectByKey_(sheet, 'token', token) || {};
+    row.is_active = 'false';
+    upsertObjectByKey_(sheet, 'token', token, row);
+  }
+  return { loggedOut: true };
+}
+
+function requireAdminToken_(token) {
+  const normalizedToken = String(token || '').trim();
+  if (!normalizedToken) {
+    throw new Error('Требуется вход администратора');
+  }
+
+  const sessionSheet = getOrCreateSheet_(SHEET_ADMIN_SESSIONS);
+  ensureHeaders_(sessionSheet, ADMIN_SESSION_HEADERS);
+  const row = getRowObjectByKey_(sessionSheet, 'token', normalizedToken);
+  if (!row) {
+    throw new Error('Сессия администратора не найдена');
+  }
+  if (!isTrue_(row.is_active)) {
+    throw new Error('Сессия администратора отключена');
+  }
+  if (!row.expiresAt || new Date(row.expiresAt).getTime() < new Date().getTime()) {
+    throw new Error('Сессия администратора истекла');
+  }
+
+  const userSheet = getOrCreateSheet_(SHEET_ADMIN_USERS);
+  ensureHeaders_(userSheet, ADMIN_USER_HEADERS);
+  const adminUser = getRowObjectByKey_(userSheet, 'login', row.login);
+  if (!adminUser || !isActiveAdmin_(adminUser)) {
+    throw new Error('Администратор отключен');
+  }
+
+  return {
+    login: row.login,
+    display_name: row.display_name || adminUser.display_name || row.login,
+    role: row.role || adminUser.role || 'admin',
+    expiresAt: row.expiresAt
+  };
+}
+
+function addRecordQuality_(row) {
+  const issues = calculateRecordIssues_(row);
+  return Object.assign({}, row, {
+    hasPhoto: !issues.missingPhoto,
+    hasDeviationMap: !issues.missingMap,
+    hasScanReport: !issues.missingReport,
+    hasIssues: issues.hasIssues,
+    issuesText: issues.issues.join(', '),
+    issues: issues.issues,
+    missingPhoto: issues.missingPhoto,
+    missingMap: issues.missingMap,
+    missingReport: issues.missingReport
+  });
+}
+
+function calculateRecordIssues_(row) {
+  const missingPhoto = !isHttpLink_(row.photoLink);
+  const missingMap = !isHttpLink_(row.deviationMapLink);
+  const missingReport = !isHttpLink_(row.scanReportLink);
+  const issues = [];
+  if (missingPhoto) issues.push('Нет фото');
+  if (missingMap) issues.push('Нет карты');
+  if (missingReport) issues.push('Нет отчета');
+  return {
+    missingPhoto: missingPhoto,
+    missingMap: missingMap,
+    missingReport: missingReport,
+    hasIssues: issues.length > 0,
+    issues: issues
+  };
+}
+
 function getOrCreateSheet_(sheetName) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName(sheetName);
@@ -376,12 +584,12 @@ function rowsToObjectsSafe_(sheetName) {
   const values = sheet.getDataRange().getValues();
   if (values.length < 2) return [];
 
-  const headers = values[0].map(h => String(h || '').trim());
+  const headers = values[0].map(function(h) { return String(h || '').trim(); });
   return values.slice(1)
-    .filter(row => row.some(cell => String(cell).trim() !== ''))
-    .map(row => {
+    .filter(function(row) { return row.some(function(cell) { return String(cell).trim() !== ''; }); })
+    .map(function(row) {
       const obj = {};
-      headers.forEach((header, idx) => {
+      headers.forEach(function(header, idx) {
         obj[header] = row[idx];
       });
       return obj;
@@ -390,7 +598,7 @@ function rowsToObjectsSafe_(sheetName) {
 
 function ensureHeaders_(sheet, expectedHeaders) {
   const currentHeaders = getHeaderRow_(sheet);
-  const hasAnyHeader = currentHeaders.some(h => String(h || '').trim() !== '');
+  const hasAnyHeader = currentHeaders.some(function(h) { return String(h || '').trim() !== ''; });
 
   if (!hasAnyHeader) {
     sheet.getRange(1, 1, 1, expectedHeaders.length).setValues([expectedHeaders]);
@@ -399,7 +607,9 @@ function ensureHeaders_(sheet, expectedHeaders) {
     return;
   }
 
-  const missingHeaders = expectedHeaders.filter(header => currentHeaders.indexOf(header) === -1);
+  const missingHeaders = expectedHeaders.filter(function(header) {
+    return currentHeaders.indexOf(header) === -1;
+  });
   if (!missingHeaders.length) return;
 
   sheet.getRange(1, currentHeaders.length + 1, 1, missingHeaders.length).setValues([missingHeaders]);
@@ -414,7 +624,7 @@ function getHeaderRow_(sheet) {
 
 function appendObjectRow_(sheet, rowObject) {
   const headers = getHeaderRow_(sheet);
-  const row = headers.map(header => normalizeValue_(rowObject[header]));
+  const row = headers.map(function(header) { return normalizeValue_(rowObject[header]); });
   sheet.appendRow(row);
 }
 
@@ -429,12 +639,12 @@ function upsertObjectByKey_(sheet, keyField, keyValue, rowObject) {
 
   const existingValues = sheet.getRange(rowIndex, 1, 1, headers.length).getValues()[0];
   const existingObject = {};
-  headers.forEach((header, index) => {
+  headers.forEach(function(header, index) {
     existingObject[header] = existingValues[index];
   });
 
   const merged = Object.assign({}, existingObject, rowObject);
-  const row = headers.map(header => normalizeValue_(merged[header]));
+  const row = headers.map(function(header) { return normalizeValue_(merged[header]); });
   sheet.getRange(rowIndex, 1, 1, headers.length).setValues([row]);
 }
 
@@ -462,7 +672,7 @@ function getRowObjectByKey_(sheet, keyField, keyValue) {
 
   const values = sheet.getRange(rowIndex, 1, 1, headers.length).getValues()[0];
   const result = {};
-  headers.forEach((header, index) => {
+  headers.forEach(function(header, index) {
     result[header] = values[index];
   });
   return result;
@@ -517,7 +727,9 @@ function calculateDraftCompleteness_(draft) {
     'materialName','nozzleTemperature','bedTemperature','printSpeed','layerHeight',
     'cadX','factX','cadY','factY','cadZ','factZ'
   ];
-  const filled = importantFields.filter(field => String(draft[field] || '').trim() !== '').length;
+  const filled = importantFields.filter(function(field) {
+    return String(draft[field] || '').trim() !== '';
+  }).length;
   return Math.round((filled / importantFields.length) * 100);
 }
 
@@ -531,6 +743,38 @@ function generateParticipantKey_() {
   const datePart = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyMMdd');
   const randomPart = Math.random().toString(36).toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
   return 'S3D-' + datePart + '-' + randomPart;
+}
+
+function generateAdminToken_() {
+  return 'ADM-' + Utilities.getUuid().replace(/-/g, '').toUpperCase();
+}
+
+function isAdminPasswordValid_(adminUser, password) {
+  const storedHash = String(adminUser.password_hash || '').trim().toLowerCase();
+  const storedPlain = String(adminUser.password_plain || '');
+  if (storedHash) {
+    return hashPassword_(password) === storedHash;
+  }
+  return storedPlain !== '' && storedPlain === password;
+}
+
+function isActiveAdmin_(row) {
+  const flag = String(row.is_active || '').trim();
+  if (!flag) return true;
+  return isTrue_(flag);
+}
+
+function hashPassword_(value) {
+  const digest = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, value, Utilities.Charset.UTF_8);
+  return digest.map(function(byte) {
+    const normalized = byte < 0 ? byte + 256 : byte;
+    const hex = normalized.toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  }).join('');
+}
+
+function isHttpLink_(value) {
+  return /^https?:\/\//i.test(String(value || '').trim());
 }
 
 function safeJsonParse_(value, fallback) {
@@ -569,7 +813,9 @@ function isTrue_(value) {
 }
 
 function isNotEmptyRow_(row) {
-  return row && Object.values(row).some(value => String(value || '').trim() !== '');
+  return row && Object.values(row).some(function(value) {
+    return String(value || '').trim() !== '';
+  });
 }
 
 function sortByNumericField_(fieldName) {
@@ -585,7 +831,9 @@ function sortByDateDescField_(fieldName) {
 }
 
 function uniqueCount_(values) {
-  const filtered = values.filter(value => String(value || '').trim() !== '');
+  const filtered = values.filter(function(value) {
+    return String(value || '').trim() !== '';
+  });
   return Array.from(new Set(filtered)).length;
 }
 
