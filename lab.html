@@ -1,22 +1,112 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Step3D.Lab - Лабораторная работа</title>
 <style>
-body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f6f8fc;color:#0f172a}a{text-decoration:none;color:inherit}.wrap{max-width:1000px;margin:0 auto;padding:0 16px}.top{position:sticky;top:0;background:#ffffffd9;backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb}.bar{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:800}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{padding:8px 10px;border-radius:10px;color:#667085}.nav a:hover{background:#fff;color:#111827}.hero{padding:40px 0 18px}.box,.card{background:#fff;border:1px solid #e5e7eb;border-radius:20px;box-shadow:0 12px 30px rgba(15,23,42,.06)}.box{padding:24px}.eyebrow{display:inline-block;padding:8px 12px;border-radius:999px;background:#f8fbff;border:1px solid #e5e7eb;color:#667085;font-size:14px;margin-bottom:14px}h1{margin:0 0 12px;font-size:42px;line-height:1;letter-spacing:-.05em}p{line-height:1.72;color:#667085}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{padding:20px}.card h2,.card h3{margin:0 0 10px;letter-spacing:-.03em}.steps{counter-reset:s;display:grid;gap:10px;padding:0}.steps li{list-style:none;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;padding:12px;border-radius:14px;background:#fbfcff;border:1px solid #eef2f7;color:#667085}.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#e8f0ff;color:#215dff;font-weight:800}.link{display:flex;justify-content:space-between;gap:12px;padding:14px;border-radius:14px;background:#fbfcff;border:1px solid #eef2f7;margin-top:10px}.link small{display:block;color:#667085}.link span{color:#215dff;font-weight:700}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:12px;background:#215dff;color:#fff;font-weight:700;margin-top:14px}.status{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;color:#667085;font-weight:600}img{width:100%;border-radius:16px;border:1px solid #e5e7eb;background:#f8fbff}@media(max-width:860px){.grid{grid-template-columns:1fr}h1{font-size:34px}}
+:root{--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#667085;--line:#e6ebf2;--accent:#215dff;--accent-soft:#eaf1ff;--shadow:0 12px 30px rgba(15,23,42,.06);--max:1080px}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#fbfdff 0,#f4f7fb 100%);color:var(--text)}a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.wrap{max-width:var(--max);margin:0 auto;padding:0 16px}.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#76a7ff);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(33,93,255,.22)}.nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.nav a{padding:9px 12px;border-radius:12px;color:var(--muted)}.nav a:hover,.nav a.active{background:#fff;color:var(--text);box-shadow:var(--shadow)}.nav .cta{background:var(--accent);color:#fff}.hero{padding:44px 0 20px}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.hero-box{padding:30px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid #d9e6ff;color:var(--accent);font-size:14px;margin-bottom:16px}h1{margin:0 0 12px;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1;letter-spacing:-.06em}.lead{margin:0;color:var(--muted);line-height:1.78;font-size:1.03rem}.ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.pill{padding:14px;border-radius:16px;background:#fbfcff;border:1px solid var(--line)}.pill span{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.pill strong{letter-spacing:-.03em}.section{padding:22px 0}.head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}.head h2{margin:0;font-size:clamp(1.7rem,3vw,2.5rem);letter-spacing:-.05em}.head p{margin:0;max-width:700px;color:var(--muted);line-height:1.72}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.box{padding:22px}.box h3{margin:0 0 10px;letter-spacing:-.03em}.box p,.box li{margin:0;color:var(--muted);line-height:1.72}.checks{display:grid;gap:10px;padding:0;margin:0}.checks li{list-style:none;display:grid;grid-template-columns:22px 1fr;gap:12px;padding:12px;border-radius:14px;background:#fbfcff;border:1px solid var(--line);color:var(--muted)}.checks li:before{content:"✓";display:grid;place-items:center;width:22px;height:22px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:800}.preview{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#f8fbff;margin-bottom:12px}.preview img{width:100%;aspect-ratio:16/10;object-fit:cover}.links{display:grid;gap:10px}.link{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid var(--line)}.link small{display:block;color:var(--muted);margin-bottom:4px}.link span{color:var(--accent);font-weight:700}.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:14px;font-weight:700}.btn.primary{background:var(--accent);color:#fff}.btn.ghost{background:#fff;border:1px solid var(--line)}.status{display:inline-flex;align-items:center;min-height:42px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);font-weight:600}@media (max-width:980px){.grid,.ribbon{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap bar"><a class="brand" href="index.html">Step3D.Lab</a><nav class="nav"><a href="index.html">Главная</a><a href="experiment.html">Форма</a></nav></div></header>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><span class="mark"></span><span>Step3D.Lab</span></a>
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a class="active" href="lab.html">Лабораторная</a>
+      <a href="experiment.html">Эксперимент</a>
+      <a class="cta" href="experiment.html">Начать</a>
+    </nav>
+  </div>
+</header>
 <main class="wrap">
-<section class="hero"><div class="box"><div class="eyebrow">Цифровая методика лабораторной работы</div><h1 id="labTitle">Лабораторная работа Step3D_01</h1><p id="labShort">Загрузка описания из таблицы...</p><div class="status" id="status">Загрузка...</div></div></section>
-<section class="grid"><div class="card"><h2>Этапы выполнения</h2><ol class="steps"><li>Открыть папку образца внутри текущего проекта сайта.</li><li>Подготовить режим FDM-печати и изготовить образец.</li><li>Снять линейные размеры по X, Y и Z.</li><li>Провести контроль геометрии в Control X.</li><li>Подготовить облачные ссылки на фото и отчеты.</li><li>Заполнить цифровую форму эксперимента.</li></ol></div><div class="card"><h2>Полное описание</h2><p id="labFull">Загрузка полного описания...</p><a class="btn" href="experiment.html">Перейти к форме эксперимента</a></div></section>
-<section class="grid" style="margin:16px 0 40px"><div class="card"><h3>Материалы образца</h3><img src="models/Step3D_01/Step3D_01_preview.svg" alt="Образец Step3D_01"><a class="link" href="https://github.com/STEP3DLab/print3D/tree/main/models/Step3D_01" target="_blank" rel="noopener"><div><small>Папка образца</small><strong>models/Step3D_01</strong></div><span>Открыть</span></a><a class="link" href="https://github.com/STEP3DLab/print3D/blob/main/models/Step3D_01/Step3D_01_reference.scad" target="_blank" rel="noopener"><div><small>3D-модель образца</small><strong>Step3D_01_reference.scad</strong></div><span>Открыть</span></a></div><div class="card"><h3>Чертеж и пояснение</h3><a class="link" href="https://github.com/STEP3DLab/print3D/blob/main/models/Step3D_01/Step3D_01_chertezh.svg" target="_blank" rel="noopener"><div><small>Чертеж</small><strong>Step3D_01_chertezh.svg</strong></div><span>Открыть</span></a><p>Внешняя ссылка на другой репозиторий удалена. Для студентов точкой входа служит только текущий проект сайта.</p></div></section>
+  <section class="hero">
+    <div class="card hero-box">
+      <div class="eyebrow">Цифровая методика лабораторной работы</div>
+      <h1 id="labTitle">Лабораторная работа Step3D_01</h1>
+      <p class="lead" id="labShort">Загрузка описания из таблицы...</p>
+      <div class="ribbon">
+        <div class="pill"><span>Образец</span><strong>Step3D_01</strong></div>
+        <div class="pill"><span>Печать</span><strong>FDM / PICASO</strong></div>
+        <div class="pill"><span>Контроль</span><strong>Control X</strong></div>
+        <div class="pill"><span>Формат сдачи</span><strong>Форма + ссылки</strong></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="experiment.html">Перейти к форме</a>
+        <a class="btn ghost" href="https://github.com/STEP3DLab/print3D/tree/main/models/Step3D_01" target="_blank" rel="noopener">Открыть папку образца</a>
+        <div class="status" id="status">Загрузка...</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="head">
+      <h2>Маршрут выполнения</h2>
+      <p>Ниже оставлены только ключевые действия без перегрузки текстом, чтобы студент быстро понял, что делать и что именно сдавать.</p>
+    </div>
+    <div class="grid">
+      <div class="card box">
+        <h3>Этапы</h3>
+        <ol class="checks">
+          <li>Открыть папку образца и подготовить материалы Step3D_01.</li>
+          <li>Изготовить образец на назначенном режиме FDM-печати.</li>
+          <li>Снять линейные размеры по X, Y и Z.</li>
+          <li>Провести контроль геометрии в Control X.</li>
+          <li>Подготовить облачные ссылки на фото и отчетные материалы.</li>
+          <li>Заполнить цифровую форму эксперимента.</li>
+        </ol>
+      </div>
+      <div class="card box">
+        <h3>Что должно получиться</h3>
+        <p id="labFull">Загрузка полного описания...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="head">
+      <h2>Материалы образца</h2>
+      <p>Визуальная опора и технические файлы доступны внутри текущего проекта сайта.</p>
+    </div>
+    <div class="grid">
+      <div class="card box">
+        <div class="preview"><img src="models/Step3D_01/Step3D_01_preview.svg" alt="Образец Step3D_01"></div>
+        <h3>Быстрый визуальный ориентир</h3>
+        <p>Эскиз помогает студенту быстро сопоставить цифровой образец с тем, что он должен напечатать и измерить.</p>
+      </div>
+      <div class="card box">
+        <h3>Файлы и ссылки</h3>
+        <div class="links">
+          <a class="link" href="https://github.com/STEP3DLab/print3D/tree/main/models/Step3D_01" target="_blank" rel="noopener"><div><small>Папка образца</small><strong>models/Step3D_01</strong></div><span>Открыть</span></a>
+          <a class="link" href="https://github.com/STEP3DLab/print3D/blob/main/models/Step3D_01/Step3D_01_reference.scad" target="_blank" rel="noopener"><div><small>3D-источник</small><strong>Step3D_01_reference.scad</strong></div><span>Открыть</span></a>
+          <a class="link" href="https://github.com/STEP3DLab/print3D/blob/main/models/Step3D_01/Step3D_01_chertezh.svg" target="_blank" rel="noopener"><div><small>Чертеж</small><strong>Step3D_01_chertezh.svg</strong></div><span>Открыть</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 <script>
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbzv3_dlEaWzyDSIKaP6fQ6OM_6sFfD3R8Oo5sjvghRvaKLbVwfCgBfKYQxRNlBdWdmqWw/exec';
-async function loadLab(){const status=document.getElementById('status');try{const res=await fetch(`${APPS_SCRIPT_URL}?action=content`);const data=await res.json();if(!data.ok) throw new Error(data.error||'Ошибка');const settings=data.content&&data.content.settings?data.content.settings:{};const labs=data.content&&data.content.lab_works?data.content.lab_works:[];const lab=labs.find(x=>String(x.lab_id).trim()==='step3d_01')||labs[0]||{};document.title=`${settings.site_name||'Step3D.Lab'} - Лабораторная работа`;document.getElementById('labTitle').textContent=lab.title||'Лабораторная работа Step3D_01';document.getElementById('labShort').textContent=lab.short_description||'Описание пока не заполнено';document.getElementById('labFull').textContent=lab.full_description||'Полное описание пока не заполнено';status.textContent='Контент загружен';}catch(e){console.error(e);status.textContent='Не удалось загрузить контент';}}
+async function loadLab(){
+  const status=document.getElementById('status');
+  try{
+    const res=await fetch(`${APPS_SCRIPT_URL}?action=content`);
+    const data=await res.json();
+    if(!data.ok) throw new Error(data.error||'Ошибка');
+    const settings=data.content&&data.content.settings?data.content.settings:{};
+    const labs=data.content&&data.content.lab_works?data.content.lab_works:[];
+    const lab=labs.find(x=>String(x.lab_id).trim()==='step3d_01')||labs[0]||{};
+    document.title=`${settings.site_name||'Step3D.Lab'} - Лабораторная работа`;
+    document.getElementById('labTitle').textContent=lab.title||'Лабораторная работа Step3D_01';
+    document.getElementById('labShort').textContent=lab.short_description||'Описание пока не заполнено.';
+    document.getElementById('labFull').textContent=lab.full_description||'Полное описание пока не заполнено.';
+    status.textContent='Контент загружен';
+  }catch(e){
+    console.error(e);
+    status.textContent='Не удалось загрузить контент';
+  }
+}
 document.addEventListener('DOMContentLoaded',loadLab);
 </script>
 </body>
