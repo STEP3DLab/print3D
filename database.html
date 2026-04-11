@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Step3D.Lab - База экспериментов</title>
+<title>Step3D.Lab - База</title>
 <style>
-:root{--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#667085;--line:#e6ebf2;--accent:#215dff;--accent-soft:#eaf1ff;--ok:#0f9d58;--warn:#b45309;--err:#b91c1c;--shadow:0 12px 30px rgba(15,23,42,.06);--max:1260px}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#fbfdff 0,#f4f7fb 100%);color:var(--text)}a{text-decoration:none;color:inherit}.wrap{max-width:var(--max);margin:0 auto;padding:0 16px}.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#76a7ff);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(33,93,255,.22)}.nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.nav a{padding:9px 12px;border-radius:12px;color:var(--muted)}.nav a:hover,.nav a.active{background:#fff;color:var(--text);box-shadow:var(--shadow)}.nav .cta{background:var(--accent);color:#fff}.hero{padding:40px 0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.hero-box{padding:28px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid #d9e6ff;color:var(--accent);font-size:14px;margin-bottom:14px}h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.6rem);line-height:1;letter-spacing:-.06em}.lead{margin:0;color:var(--muted);line-height:1.74}.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:18px}.stat{padding:14px;border-radius:18px;background:#fbfcff;border:1px solid var(--line)}.stat span{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.stat strong{font-size:1.02rem;letter-spacing:-.03em}.section{padding:18px 0}.toolbar{padding:18px;display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto auto;gap:12px;align-items:end}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:600}.field input,.field select{width:100%;min-height:46px;border-radius:12px;border:1px solid #dbe0ea;background:#fff;padding:12px 14px;font:inherit;color:var(--text)}.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(33,93,255,.08)}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:14px;font-weight:700;border:0;cursor:pointer;white-space:nowrap}.btn.primary{background:var(--accent);color:#fff}.btn.ghost{background:#fff;border:1px solid var(--line)}.btn.tiny{min-height:34px;padding:0 10px;border-radius:10px;font-size:12px;background:#fff;border:1px solid var(--line);color:var(--text)}.btn.tiny:hover,.btn.ghost:hover{box-shadow:var(--shadow)}.table-card{padding:12px}.table-wrap{overflow:auto;border-radius:18px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;min-width:1380px}th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;color:var(--muted);font-weight:700;background:#fbfcff;position:sticky;top:0}td{font-size:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}.muted{color:var(--muted)}.chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:#f8fbff;border:1px solid var(--line);font-size:12px;color:var(--muted)}.chip.good{background:#eefbf2;border-color:#d6f2de;color:var(--ok)}.chip.warn{background:#fff7ed;border-color:#fde2c2;color:var(--warn)}.links-row{display:flex;flex-wrap:wrap;gap:6px}.cards{display:none;gap:12px}.record{padding:18px}.record h3{margin:0 0 8px;font-size:1rem;letter-spacing:-.03em}.record p{margin:0;color:var(--muted);line-height:1.7}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.record-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.empty{padding:28px;text-align:center;color:var(--muted)}.status{display:inline-flex;align-items:center;min-height:42px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);font-weight:600}.status.ok{color:var(--ok)}.status.warn{color:var(--warn)}.status.err{color:var(--err)}.footer{padding:28px 0 54px;color:var(--muted)}.footer .card{padding:18px 20px}@media (max-width:1180px){.toolbar{grid-template-columns:1fr 1fr}.toolbar .action-cell{grid-column:1/-1}.stats{grid-template-columns:repeat(3,1fr)}}@media (max-width:860px){.stats{grid-template-columns:1fr 1fr}.table-card{display:none}.cards{display:grid}.record-grid{grid-template-columns:1fr}}
+:root{--bg:#f7f8fb;--card:#ffffff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent-soft:#eff6ff;--ok:#059669;--warn:#b45309;--err:#dc2626;--shadow:0 10px 30px rgba(17,24,39,.05);--radius:24px;--max:1180px}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}a{text-decoration:none;color:inherit}.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}.top{position:sticky;top:0;z-index:30;background:rgba(247,248,251,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7aa2ff);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 24px rgba(37,99,235,.18)}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{padding:10px 12px;border-radius:12px;color:var(--muted)}.nav a:hover,.nav a.active{background:#fff;color:var(--text);box-shadow:var(--shadow)}.nav a.cta{background:var(--accent);color:#fff}.hero{padding:40px 0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-box{padding:28px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid #dbeafe;color:var(--accent);font-size:14px;margin-bottom:16px}h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.4rem);line-height:.98;letter-spacing:-.06em}.lead{margin:0;color:var(--muted);line-height:1.74}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.stat{padding:14px;border-radius:18px;background:#fbfbfc;border:1px solid var(--line)}.stat span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.stat strong{letter-spacing:-.03em}.section{padding:18px 0}.toolbar{padding:18px;display:grid;grid-template-columns:1.2fr .8fr .8fr auto auto;gap:12px;align-items:end}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:600}.field input,.field select{width:100%;min-height:46px;border-radius:12px;border:1px solid #d1d5db;background:#fff;padding:12px 14px;font:inherit;color:var(--text)}.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.08)}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:14px;font-weight:700;border:0;cursor:pointer;white-space:nowrap}.btn.primary{background:var(--accent);color:#fff}.btn.secondary{background:#fff;border:1px solid var(--line)}.btn.tiny{min-height:34px;padding:0 10px;border-radius:10px;font-size:12px;background:#fff;border:1px solid var(--line)}.status{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);font-weight:600}.status.ok{color:var(--ok)}.status.warn{color:var(--warn)}.status.err{color:var(--err)}.table-card{padding:12px}.table-wrap{overflow:auto;border-radius:18px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;min-width:1180px}th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;color:var(--muted);font-weight:700;background:#fbfbfc;position:sticky;top:0}td{font-size:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}.chip{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:#fbfbfc;border:1px solid var(--line);font-size:12px;color:var(--muted)}.chip.good{background:#ecfdf5;border-color:#d1fae5;color:var(--ok)}.chip.warn{background:#fff7ed;border-color:#fed7aa;color:var(--warn)}.links{display:flex;flex-wrap:wrap;gap:6px}.cards{display:none;gap:12px}.record{padding:18px}.record h3{margin:0 0 8px}.record p{margin:0;color:var(--muted);line-height:1.68}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.record-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.empty{padding:28px;text-align:center;color:var(--muted)}.footer{padding:24px 0 46px;color:var(--muted)}.footer .card{padding:18px 20px}@media (max-width:980px){.toolbar,.stats,.record-grid{grid-template-columns:1fr}.table-card{display:none}.cards{display:grid}h1{font-size:clamp(1.9rem,11vw,3rem)}}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="index.html"><span class="mark"></span><span>Step3D.Lab</span></a>
+    <a class="brand" href="index.html"><span class="logo"></span><span>Step3D.Lab</span></a>
     <nav class="nav">
       <a href="index.html">Главная</a>
       <a href="lab.html">Лабораторная</a>
-      <a href="experiment.html">Эксперимент</a>
+      <a href="experiment.html">Форма</a>
       <a class="active" href="database.html">База</a>
       <a class="cta" href="experiment.html">Новый опыт</a>
     </nav>
@@ -24,15 +24,13 @@
 <main class="wrap">
   <section class="hero">
     <div class="card hero-box">
-      <div class="eyebrow">Единая страница просмотра и фильтрации записей</div>
-      <h1>База экспериментов</h1>
-      <p class="lead">Здесь собраны записи, отправленные через форму Step3D.Lab. Теперь база показывает не только строки, но и быстрые переходы к фото, карте отклонений, G-code и отчету scan-to-CAD.</p>
+      <div class="eyebrow">Общая база записей</div>
+      <h1>Чистый просмотр опытов</h1>
+      <p class="lead">База собирает записи из формы Step3D.Lab и дает спокойный рабочий экран для поиска, фильтрации и быстрого перехода к материалам опыта.</p>
       <div class="stats">
         <div class="stat"><span>Всего записей</span><strong id="totalCount">0</strong></div>
-        <div class="stat"><span>Уникальных студентов</span><strong id="studentCount">0</strong></div>
+        <div class="stat"><span>Студентов</span><strong id="studentCount">0</strong></div>
         <div class="stat"><span>Принтеров</span><strong id="printerCount">0</strong></div>
-        <div class="stat"><span>С фото</span><strong id="photoCount">0</strong></div>
-        <div class="stat"><span>С отчетом</span><strong id="reportCount">0</strong></div>
         <div class="stat"><span>Последняя дата</span><strong id="latestDate">-</strong></div>
       </div>
     </div>
@@ -40,37 +38,17 @@
 
   <section class="section">
     <div class="card toolbar">
-      <div class="field">
-        <label for="searchInput">Поиск</label>
-        <input id="searchInput" type="text" placeholder="ФИО, sample_id, группа, материал">
-      </div>
-      <div class="field">
-        <label for="printerFilter">Принтер</label>
-        <select id="printerFilter"><option value="">Все принтеры</option></select>
-      </div>
-      <div class="field">
-        <label for="groupFilter">Группа</label>
-        <select id="groupFilter"><option value="">Все группы</option></select>
-      </div>
-      <div class="field">
-        <label for="sortFilter">Сортировка</label>
-        <select id="sortFilter">
-          <option value="date_desc">Сначала новые</option>
-          <option value="date_asc">Сначала старые</option>
-          <option value="student_asc">По студенту</option>
-          <option value="printer_asc">По принтеру</option>
-        </select>
-      </div>
-      <button class="btn ghost action-cell" id="resetBtn" type="button">Сбросить</button>
-      <button class="btn primary action-cell" id="exportBtn" type="button">CSV</button>
+      <div class="field"><label for="searchInput">Поиск</label><input id="searchInput" type="text" placeholder="ФИО, sample_id, группа"></div>
+      <div class="field"><label for="printerFilter">Принтер</label><select id="printerFilter"><option value="">Все</option></select></div>
+      <div class="field"><label for="groupFilter">Группа</label><select id="groupFilter"><option value="">Все</option></select></div>
+      <button class="btn secondary" id="resetBtn" type="button">Сбросить</button>
+      <button class="btn primary" id="exportBtn" type="button">CSV</button>
     </div>
   </section>
 
-  <section class="section">
-    <div class="status" id="status">Загрузка базы...</div>
-  </section>
+  <section class="section"><div class="status" id="status">Загрузка базы...</div></section>
 
-  <section class="section table-card card">
+  <section class="section card table-card">
     <div class="table-wrap">
       <table>
         <thead>
@@ -79,10 +57,7 @@
             <th>Студент</th>
             <th>sample_id</th>
             <th>Принтер</th>
-            <th>Материал</th>
-            <th>Скорость</th>
             <th>Усадка</th>
-            <th>Контроль</th>
             <th>Материалы</th>
             <th>Полнота</th>
           </tr>
@@ -95,7 +70,7 @@
   <section class="section cards" id="cardsView"></section>
 
   <footer class="footer">
-    <div class="card">Step3D.Lab • GitHub Pages + Google Sheets + Google Apps Script</div>
+    <div class="card">Step3D.Lab • База экспериментов</div>
   </footer>
 </main>
 <script>
@@ -104,27 +79,24 @@ const state={all:[],filtered:[]};
 const searchInput=document.getElementById('searchInput');
 const printerFilter=document.getElementById('printerFilter');
 const groupFilter=document.getElementById('groupFilter');
-const sortFilter=document.getElementById('sortFilter');
 const tableBody=document.getElementById('tableBody');
 const cardsView=document.getElementById('cardsView');
 const statusNode=document.getElementById('status');
 function setStatus(text,mode=''){statusNode.textContent=text;statusNode.className=`status ${mode}`.trim();}
-function parseArrayPayload(data){if(Array.isArray(data)) return data;if(Array.isArray(data.experiments)) return data.experiments;if(Array.isArray(data.rows)) return data.rows;if(Array.isArray(data.items)) return data.items;if(Array.isArray(data.data)) return data.data;if(data.result&&Array.isArray(data.result)) return data.result;return [];}
+function parseArrayPayload(data){if(Array.isArray(data)) return data;if(Array.isArray(data.experiments)) return data.experiments;if(Array.isArray(data.rows)) return data.rows;if(Array.isArray(data.items)) return data.items;if(Array.isArray(data.data)) return data.data;return [];}
 function asText(v){return v===undefined||v===null?'':String(v).trim();}
 function isLink(v){return /^https?:\/\//i.test(asText(v));}
-function linkButton(url,label){return isLink(url)?`<a class="btn tiny" href="${url}" target="_blank" rel="noopener">${label}</a>`:'';}
-function completeness(row){const assets=[row.photo,row.map,row.gcode,row.report].filter(isLink).length;return assets>=3?{text:'Высокая',className:'good'}:assets>=1?{text:'Средняя',className:'warn'}:{text:'Низкая',className:''};}
-function normalize(row){const date=asText(row.experimentDate||row.date||((row.submittedAt||'').slice?row.submittedAt.slice(0,10):'')||'');const integral=asText(row.shrinkageIntegral||row.integralShrinkage||'');return{date,submitted:asText(row.submittedAt||''),student:asText(row.studentName||row.student||row.name),group:asText(row.groupName||row.group),sampleId:asText(row.sampleId||row.sample_id),printer:asText(row.printerModel||row.printer),material:asText(row.materialName||row.material),speed:asText(row.printSpeed||row.speed),integral,scanner:asText(row.scannerModel||row.scanner||row.softwareName||''),notes:asText(row.notes||''),photo:asText(row.photoLink||''),map:asText(row.deviationMapLink||''),gcode:asText(row.gcodeLink||''),report:asText(row.scanReportLink||''),raw:row};}
+function tinyLink(url,label){return isLink(url)?`<a class="btn tiny" href="${url}" target="_blank" rel="noopener">${label}</a>`:'';}
+function normalize(row){return{date:asText(row.experimentDate||((row.submittedAt||'').slice?row.submittedAt.slice(0,10):'')),student:asText(row.studentName||''),group:asText(row.groupName||''),sampleId:asText(row.sampleId||''),printer:asText(row.printerModel||''),integral:asText(row.shrinkageIntegral||''),photo:asText(row.photoLink||''),map:asText(row.deviationMapLink||''),gcode:asText(row.gcodeLink||''),report:asText(row.scanReportLink||'')};}
+function completeness(r){const count=[r.photo,r.map,r.gcode,r.report].filter(isLink).length;return count>=3?{text:'Высокая',cls:'good'}:count>=1?{text:'Средняя',cls:'warn'}:{text:'Низкая',cls:''};}
 function uniqueSorted(values){return [...new Set(values.filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ru'));}
-function formatDate(value){return value||'-';}
-function updateStats(rows){document.getElementById('totalCount').textContent=rows.length;document.getElementById('studentCount').textContent=uniqueSorted(rows.map(r=>r.student)).length;document.getElementById('printerCount').textContent=uniqueSorted(rows.map(r=>r.printer)).length;document.getElementById('photoCount').textContent=rows.filter(r=>isLink(r.photo)).length;document.getElementById('reportCount').textContent=rows.filter(r=>isLink(r.report)).length;const dates=rows.map(r=>r.date).filter(Boolean).sort();document.getElementById('latestDate').textContent=dates.length?dates[dates.length-1]:'-';}
-function renderFilters(rows){const printers=uniqueSorted(rows.map(r=>r.printer));const groups=uniqueSorted(rows.map(r=>r.group));const currentPrinter=printerFilter.value;const currentGroup=groupFilter.value;printerFilter.innerHTML='<option value="">Все принтеры</option>'+printers.map(v=>`<option value="${v.replace(/"/g,'&quot;')}">${v}</option>`).join('');groupFilter.innerHTML='<option value="">Все группы</option>'+groups.map(v=>`<option value="${v.replace(/"/g,'&quot;')}">${v}</option>`).join('');printerFilter.value=printers.includes(currentPrinter)?currentPrinter:'';groupFilter.value=groups.includes(currentGroup)?currentGroup:'';}
-function sortRows(rows,mode){const copy=[...rows];if(mode==='date_asc') return copy.sort((a,b)=>asText(a.date).localeCompare(asText(b.date)));if(mode==='student_asc') return copy.sort((a,b)=>asText(a.student).localeCompare(asText(b.student),'ru'));if(mode==='printer_asc') return copy.sort((a,b)=>asText(a.printer).localeCompare(asText(b.printer),'ru'));return copy.sort((a,b)=>asText(b.date).localeCompare(asText(a.date)));}
-function applyFilters(){const q=searchInput.value.trim().toLowerCase();const p=printerFilter.value;const g=groupFilter.value;let rows=state.all.filter(r=>{const hay=[r.student,r.group,r.sampleId,r.printer,r.material,r.notes].join(' ').toLowerCase();const passQ=!q||hay.includes(q);const passP=!p||r.printer===p;const passG=!g||r.group===g;return passQ&&passP&&passG;});rows=sortRows(rows,sortFilter.value);state.filtered=rows;renderRows(rows);updateStats(rows);setStatus(rows.length?`Показано записей: ${rows.length}`:'Записей по текущему фильтру не найдено',rows.length?'ok':'warn');}
-function renderRows(rows){if(!rows.length){tableBody.innerHTML='<tr><td colspan="10" class="empty">Нет данных для отображения</td></tr>';cardsView.innerHTML='<div class="card empty">Нет данных для отображения</div>';return;}tableBody.innerHTML=rows.map(r=>{const comp=completeness(r);const materials=[linkButton(r.photo,'Фото'),linkButton(r.map,'Карта'),linkButton(r.gcode,'G-code'),linkButton(r.report,'Отчет')].filter(Boolean).join('');return `<tr><td>${formatDate(r.date)}</td><td><strong>${r.student||'-'}</strong><div class="muted">${r.group||''}</div></td><td><span class="mono">${r.sampleId||'-'}</span></td><td><span class="chip">${r.printer||'-'}</span></td><td>${r.material||'-'}</td><td>${r.speed?`${r.speed} мм/с`:'-'}</td><td>${r.integral?`${Number(r.integral).toFixed(3)} %`:'-'}</td><td>${r.scanner||'-'}</td><td><div class="links-row">${materials||'<span class="muted">Нет ссылок</span>'}</div></td><td><span class="chip ${comp.className}">${comp.text}</span></td></tr>`;}).join('');cardsView.innerHTML=rows.map(r=>{const comp=completeness(r);const materials=[linkButton(r.photo,'Фото'),linkButton(r.map,'Карта'),linkButton(r.gcode,'G-code'),linkButton(r.report,'Отчет')].filter(Boolean).join('');return `<article class="card record"><h3>${r.student||'Без имени'}</h3><p>${formatDate(r.date)} • ${r.group||'Без группы'}</p><div class="record-grid"><div><span class="muted">sample_id</span><div class="mono">${r.sampleId||'-'}</div></div><div><span class="muted">Принтер</span><div>${r.printer||'-'}</div></div><div><span class="muted">Материал</span><div>${r.material||'-'}</div></div><div><span class="muted">Интегральная усадка</span><div>${r.integral?`${Number(r.integral).toFixed(3)} %`:'-'}</div></div><div><span class="muted">Контроль</span><div>${r.scanner||'-'}</div></div><div><span class="muted">Полнота</span><div><span class="chip ${comp.className}">${comp.text}</span></div></div></div><div class="record-links">${materials||'<span class="muted">Нет ссылок на материалы</span>'}</div></article>`;}).join('');}
-function exportCsv(){const rows=state.filtered.length?state.filtered:state.all;if(!rows.length){setStatus('Нет данных для экспорта','warn');return;}const headers=['date','student','group','sampleId','printer','material','speed','integral','scanner','photo','map','gcode','report'];const csv=[headers.join(',')].concat(rows.map(r=>headers.map(h=>`"${String(r[h]??'').replace(/"/g,'""')}"`).join(','))).join('\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='step3d база экспериментов.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);setStatus('CSV выгружен','ok');}
-async function loadExperiments(){try{const res=await fetch(`${APPS_SCRIPT_URL}?action=experiments`);const data=await res.json();const rows=parseArrayPayload(data).map(normalize).filter(r=>r.student||r.sampleId||r.date);state.all=rows;renderFilters(rows);applyFilters();if(!rows.length){setStatus('База пуста или backend еще не отдает action=experiments','warn');}}catch(error){console.error(error);state.all=[];renderRows([]);updateStats([]);setStatus('Не удалось загрузить базу. Нужен ответ backend по action=experiments','err');}}
-searchInput.addEventListener('input',applyFilters);printerFilter.addEventListener('change',applyFilters);groupFilter.addEventListener('change',applyFilters);sortFilter.addEventListener('change',applyFilters);document.getElementById('resetBtn').addEventListener('click',()=>{searchInput.value='';printerFilter.value='';groupFilter.value='';sortFilter.value='date_desc';applyFilters();});document.getElementById('exportBtn').addEventListener('click',exportCsv);document.addEventListener('DOMContentLoaded',loadExperiments);
+function updateStats(rows){document.getElementById('totalCount').textContent=rows.length;document.getElementById('studentCount').textContent=uniqueSorted(rows.map(r=>r.student)).length;document.getElementById('printerCount').textContent=uniqueSorted(rows.map(r=>r.printer)).length;const dates=rows.map(r=>r.date).filter(Boolean).sort();document.getElementById('latestDate').textContent=dates.length?dates[dates.length-1]:'-';}
+function renderFilters(rows){const printers=uniqueSorted(rows.map(r=>r.printer));const groups=uniqueSorted(rows.map(r=>r.group));printerFilter.innerHTML='<option value="">Все</option>'+printers.map(v=>`<option value="${v.replace(/"/g,'&quot;')}">${v}</option>`).join('');groupFilter.innerHTML='<option value="">Все</option>'+groups.map(v=>`<option value="${v.replace(/"/g,'&quot;')}">${v}</option>`).join('');}
+function applyFilters(){const q=searchInput.value.trim().toLowerCase();const p=printerFilter.value;const g=groupFilter.value;const rows=state.all.filter(r=>{const hay=[r.student,r.group,r.sampleId,r.printer].join(' ').toLowerCase();return (!q||hay.includes(q))&&(!p||r.printer===p)&&(!g||r.group===g);}).sort((a,b)=>asText(b.date).localeCompare(asText(a.date)));state.filtered=rows;renderRows(rows);updateStats(rows);setStatus(rows.length?`Показано записей: ${rows.length}`:'Ничего не найдено',rows.length?'ok':'warn');}
+function renderRows(rows){if(!rows.length){tableBody.innerHTML='<tr><td colspan="7" class="empty">Нет данных</td></tr>';cardsView.innerHTML='<div class="card empty">Нет данных</div>';return;}tableBody.innerHTML=rows.map(r=>{const comp=completeness(r);const links=[tinyLink(r.photo,'Фото'),tinyLink(r.map,'Карта'),tinyLink(r.gcode,'G-code'),tinyLink(r.report,'Отчет')].filter(Boolean).join('');return `<tr><td>${r.date||'-'}</td><td><strong>${r.student||'-'}</strong><div style="color:#6b7280">${r.group||''}</div></td><td><span class="mono">${r.sampleId||'-'}</span></td><td><span class="chip">${r.printer||'-'}</span></td><td>${r.integral?`${Number(r.integral).toFixed(3)} %`:'-'}</td><td><div class="links">${links||'<span style="color:#6b7280">Нет ссылок</span>'}</div></td><td><span class="chip ${comp.cls}">${comp.text}</span></td></tr>`;}).join('');cardsView.innerHTML=rows.map(r=>{const comp=completeness(r);const links=[tinyLink(r.photo,'Фото'),tinyLink(r.map,'Карта'),tinyLink(r.gcode,'G-code'),tinyLink(r.report,'Отчет')].filter(Boolean).join('');return `<article class="card record"><h3>${r.student||'Без имени'}</h3><p>${r.date||'-'} • ${r.group||'Без группы'}</p><div class="record-grid"><div><span style="color:#6b7280">sample_id</span><div class="mono">${r.sampleId||'-'}</div></div><div><span style="color:#6b7280">Принтер</span><div>${r.printer||'-'}</div></div><div><span style="color:#6b7280">Усадка</span><div>${r.integral?`${Number(r.integral).toFixed(3)} %`:'-'}</div></div><div><span style="color:#6b7280">Полнота</span><div><span class="chip ${comp.cls}">${comp.text}</span></div></div></div><div class="record-links">${links||'<span style="color:#6b7280">Нет ссылок</span>'}</div></article>`;}).join('');}
+function exportCsv(){const rows=state.filtered.length?state.filtered:state.all;if(!rows.length){setStatus('Нет данных для экспорта','warn');return;}const headers=['date','student','group','sampleId','printer','integral','photo','map','gcode','report'];const csv=[headers.join(',')].concat(rows.map(r=>headers.map(h=>`"${String(r[h]??'').replace(/"/g,'""')}"`).join(','))).join('\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='step3d база экспериментов.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);setStatus('CSV выгружен','ok');}
+async function loadExperiments(){try{const res=await fetch(`${APPS_SCRIPT_URL}?action=experiments`);const data=await res.json();const rows=parseArrayPayload(data).map(normalize).filter(r=>r.student||r.sampleId||r.date);state.all=rows;renderFilters(rows);applyFilters();if(!rows.length)setStatus('База пуста или backend еще не отдает action=experiments','warn');}catch(error){console.error(error);state.all=[];renderRows([]);updateStats([]);setStatus('Не удалось загрузить базу','err');}}
+searchInput.addEventListener('input',applyFilters);printerFilter.addEventListener('change',applyFilters);groupFilter.addEventListener('change',applyFilters);document.getElementById('resetBtn').addEventListener('click',()=>{searchInput.value='';printerFilter.value='';groupFilter.value='';applyFilters();});document.getElementById('exportBtn').addEventListener('click',exportCsv);document.addEventListener('DOMContentLoaded',loadExperiments);
 </script>
 </body>
 </html>

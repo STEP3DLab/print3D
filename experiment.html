@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Step3D.Lab - Эксперимент</title>
+<title>Step3D.Lab - Форма</title>
 <style>
-:root{--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#667085;--line:#e6ebf2;--accent:#215dff;--accent-soft:#eaf1ff;--ok:#0f9d58;--warn:#b45309;--err:#b91c1c;--shadow:0 12px 30px rgba(15,23,42,.06);--max:1180px}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#fbfdff 0,#f4f7fb 100%);color:var(--text)}a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.wrap{max-width:var(--max);margin:0 auto;padding:0 16px}.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#76a7ff);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(33,93,255,.22)}.nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.nav a{padding:9px 12px;border-radius:12px;color:var(--muted)}.nav a:hover,.nav a.active{background:#fff;color:var(--text);box-shadow:var(--shadow)}.nav .cta{background:var(--accent);color:#fff}.hero{padding:40px 0 18px}.hero-box{padding:28px}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid #d9e6ff;color:var(--accent);font-size:14px;margin-bottom:14px}h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.6rem);line-height:1;letter-spacing:-.06em}.lead{margin:0;color:var(--muted);line-height:1.74}.layout{display:grid;grid-template-columns:.86fr 1.14fr;gap:16px;padding-bottom:34px}.stack{display:grid;gap:12px}.note{padding:18px}.note h3,.sectionbox h3{margin:0 0 10px;letter-spacing:-.03em}.note p,.note li{margin:0;color:var(--muted);line-height:1.72}.preview{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#f8fbff;margin-bottom:12px}.preview img{width:100%;aspect-ratio:16/10;object-fit:cover}.progressbar{height:10px;border-radius:999px;background:#eef3fb;overflow:hidden;border:1px solid #dde7f7}.progressbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#78a7ff);transition:width .2s ease}.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kpi{padding:12px;border-radius:14px;background:#fbfcff;border:1px solid var(--line)}.kpi span{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.kpi strong{letter-spacing:-.03em}.form{padding:22px;display:grid;gap:14px}.stepchips{display:flex;gap:8px;flex-wrap:wrap}.stepchips span{padding:8px 10px;border-radius:999px;background:#fbfcff;border:1px solid var(--line);font-size:13px;color:var(--muted)}.sectionbox{padding:16px;border-radius:18px;background:#fbfcff;border:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field{display:grid;gap:6px}.field label{font-size:14px;color:var(--muted);font-weight:600}.field input,.field select,.field textarea{width:100%;min-height:46px;border-radius:12px;border:1px solid #dbe0ea;background:#fff;padding:12px 14px;font:inherit;color:var(--text)}.field textarea{min-height:100px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(33,93,255,.08)}.field small{color:var(--muted);font-size:12px}.results{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.result{padding:14px;border-radius:14px;background:#fff;border:1px solid var(--line)}.result span{display:block;color:var(--muted);font-size:12px;margin-bottom:8px}.result strong{font-size:20px;letter-spacing:-.03em}.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:14px;font-weight:700;border:0;cursor:pointer}.btn.primary{background:var(--accent);color:#fff}.btn.ghost{background:#fff;border:1px solid var(--line)}.status{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);font-weight:600}.status.ok{color:var(--ok)}.status.warn{color:var(--warn)}.status.err{color:var(--err)}@media (max-width:980px){.layout,.grid,.grid3,.results,.kpis{grid-template-columns:1fr}}
+:root{--bg:#f7f8fb;--card:#ffffff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent-soft:#eff6ff;--ok:#059669;--warn:#b45309;--err:#dc2626;--shadow:0 10px 30px rgba(17,24,39,.05);--radius:24px;--max:1120px}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}a{text-decoration:none;color:inherit}.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}.top{position:sticky;top:0;z-index:30;background:rgba(247,248,251,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7aa2ff);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 24px rgba(37,99,235,.18)}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a{padding:10px 12px;border-radius:12px;color:var(--muted)}.nav a:hover,.nav a.active{background:#fff;color:var(--text);box-shadow:var(--shadow)}.nav a.cta{background:var(--accent);color:#fff}.hero{padding:40px 0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-box{padding:28px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid #dbeafe;color:var(--accent);font-size:14px;margin-bottom:16px}h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.4rem);line-height:.98;letter-spacing:-.06em}.lead{margin:0;color:var(--muted);line-height:1.74}.layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:16px;padding-bottom:34px}.stack{display:grid;gap:12px}.note{padding:18px}.note h3,.section h3{margin:0 0 10px;letter-spacing:-.03em}.note p{margin:0;color:var(--muted);line-height:1.72}.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kpi{padding:12px;border-radius:16px;background:#fbfbfc;border:1px solid var(--line)}.kpi span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.kpi strong{letter-spacing:-.03em}.preview{overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#fff}.preview img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#f9fafb}.progress{height:10px;border-radius:999px;background:#eef2ff;border:1px solid #dbeafe;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#7aa2ff);transition:width .2s ease}.form-card{padding:22px}.form{display:grid;gap:14px}.section{padding:16px;border-radius:18px;background:#fbfbfc;border:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.grid.three{grid-template-columns:repeat(3,1fr)}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:600}.field input,.field select,.field textarea{width:100%;min-height:46px;border-radius:12px;border:1px solid #d1d5db;background:#fff;padding:12px 14px;font:inherit;color:var(--text)}.field textarea{min-height:92px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.08)}.field small{font-size:12px;color:var(--muted)}.results{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.result{padding:14px;border-radius:16px;background:#fff;border:1px solid var(--line)}.result span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.result strong{letter-spacing:-.03em}.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:14px;font-weight:700;border:0;cursor:pointer}.btn.primary{background:var(--accent);color:#fff}.btn.secondary{background:#fff;border:1px solid var(--line)}.status{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);font-weight:600}.status.ok{color:var(--ok)}.status.warn{color:var(--warn)}.status.err{color:var(--err)}@media (max-width:960px){.layout,.grid,.grid.three,.results,.kpis{grid-template-columns:1fr}h1{font-size:clamp(1.9rem,11vw,3rem)}}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="index.html"><span class="mark"></span><span>Step3D.Lab</span></a>
+    <a class="brand" href="index.html"><span class="logo"></span><span>Step3D.Lab</span></a>
     <nav class="nav">
       <a href="index.html">Главная</a>
       <a href="lab.html">Лабораторная</a>
-      <a class="active" href="experiment.html">Эксперимент</a>
+      <a class="active" href="experiment.html">Форма</a>
       <a href="database.html">База</a>
       <a class="cta" href="#send">Отправить</a>
     </nav>
@@ -24,125 +24,98 @@
 <main class="wrap">
   <section class="hero">
     <div class="card hero-box">
-      <div class="eyebrow">Отдельная цифровая форма эксперимента</div>
-      <h1>Новый эксперимент</h1>
-      <p class="lead">Запись уходит в лист <strong>experiments</strong>. Форма считает sample_id и усадку автоматически, а справа всегда видна живая сводка по заполнению. После отправки запись можно будет проверить в разделе базы экспериментов.</p>
+      <div class="eyebrow">Форма нового эксперимента</div>
+      <h1>Одна форма. Ничего лишнего.</h1>
+      <p class="lead">Заполните параметры опыта, проверьте автоматические расчеты и отправьте запись в общую исследовательскую базу.</p>
     </div>
   </section>
-
   <section class="layout">
     <aside class="stack">
       <div class="card note">
-        <h3>Прогресс заполнения</h3>
-        <div class="progressbar"><span id="progressFill"></span></div>
+        <h3>Прогресс</h3>
+        <div class="progress"><span id="progressFill"></span></div>
         <div class="kpis" style="margin-top:12px">
           <div class="kpi"><span>Заполнено</span><strong id="filledCount">0</strong></div>
-          <div class="kpi"><span>Обязательных полей</span><strong id="requiredCount">0</strong></div>
+          <div class="kpi"><span>Обязательных</span><strong id="requiredCount">0</strong></div>
           <div class="kpi"><span>sample_id</span><strong id="sampleIdView">-</strong></div>
-          <div class="kpi"><span>Автосохранение</span><strong id="draftState">Выкл.</strong></div>
+          <div class="kpi"><span>Черновик</span><strong id="draftState">Выкл.</strong></div>
         </div>
       </div>
-
       <div class="card note">
-        <h3>Образец Step3D_01</h3>
+        <h3>Образец</h3>
         <div class="preview"><img src="models/Step3D_01/Step3D_01_preview.svg" alt="Образец Step3D_01"></div>
-        <p style="margin-bottom:10px">Материалы образца находятся внутри текущего проекта сайта.</p>
-        <a href="https://github.com/STEP3DLab/print3D/tree/main/models/Step3D_01" target="_blank" rel="noopener" style="display:block;color:var(--accent);font-weight:700;margin-bottom:8px">Открыть папку образца</a>
-        <a href="database.html" style="display:block;color:var(--accent);font-weight:700">Открыть базу экспериментов</a>
+        <p style="margin-top:12px">Все материалы образца лежат внутри проекта сайта.</p>
       </div>
-
       <div class="card note">
-        <h3>Живые расчеты</h3>
-        <div class="kpis">
-          <div class="kpi"><span>Усадка X</span><strong id="sxView">-</strong></div>
-          <div class="kpi"><span>Усадка Y</span><strong id="syView">-</strong></div>
-          <div class="kpi"><span>Усадка Z</span><strong id="szView">-</strong></div>
-          <div class="kpi"><span>Интегральная</span><strong id="siView">-</strong></div>
+        <h3>Расчет</h3>
+        <div class="results">
+          <div class="result"><span>X</span><strong id="sxView">-</strong></div>
+          <div class="result"><span>Y</span><strong id="syView">-</strong></div>
+          <div class="result"><span>Z</span><strong id="szView">-</strong></div>
+          <div class="result"><span>Интеграл</span><strong id="siView">-</strong></div>
         </div>
       </div>
     </aside>
-
-    <section class="card form">
-      <div class="stepchips">
-        <span>Паспорт</span><span>Материал</span><span>Печать</span><span>Измерения</span><span>Контроль</span><span>Ссылки</span>
-      </div>
-
-      <form id="experimentForm">
-        <div class="sectionbox">
-          <h3>1. Паспорт опыта</h3>
+    <section class="card form-card">
+      <form id="experimentForm" class="form">
+        <div class="section">
+          <h3>Паспорт опыта</h3>
           <div class="grid">
-            <div class="field"><label for="studentName">ФИО студента</label><input id="studentName" name="studentName" type="text" required></div>
+            <div class="field"><label for="studentName">ФИО</label><input id="studentName" name="studentName" type="text" required></div>
             <div class="field"><label for="groupName">Группа</label><input id="groupName" name="groupName" type="text" required></div>
-            <div class="field"><label for="experimentDate">Дата опыта</label><input id="experimentDate" name="experimentDate" type="date" required></div>
-            <div class="field"><label for="variantCode">Код варианта</label><input id="variantCode" name="variantCode" type="text" placeholder="V03" required></div>
+            <div class="field"><label for="experimentDate">Дата</label><input id="experimentDate" name="experimentDate" type="date" required></div>
+            <div class="field"><label for="variantCode">Вариант</label><input id="variantCode" name="variantCode" type="text" placeholder="V03" required></div>
             <div class="field"><label for="repeatCode">Повтор</label><input id="repeatCode" name="repeatCode" type="text" placeholder="R01" required></div>
-            <div class="field"><label for="sampleId">sample_id</label><input id="sampleId" name="sampleId" type="text" readonly><small>Генерируется автоматически.</small></div>
+            <div class="field"><label for="sampleId">sample_id</label><input id="sampleId" name="sampleId" type="text" readonly><small>Автоматически</small></div>
           </div>
         </div>
-
-        <div class="sectionbox">
-          <h3>2. Оборудование и материал</h3>
+        <div class="section">
+          <h3>Оборудование и материал</h3>
           <div class="grid">
-            <div class="field"><label for="printerModel">Принтер</label><select id="printerModel" name="printerModel" required><option value="">Выберите принтер</option><option>PICASO Designer XL</option><option>PICASO Designer XL Pro</option><option>PICASO Other</option></select></div>
-            <div class="field"><label for="scannerModel">Сканер / контроль</label><select id="scannerModel" name="scannerModel" required><option value="">Выберите средство контроля</option><option>Geomagic Control X</option><option>RangeVision Spectrum</option><option>Artec Space Spider</option><option>Другое</option></select></div>
+            <div class="field"><label for="printerModel">Принтер</label><select id="printerModel" name="printerModel" required><option value="">Выберите</option><option>PICASO Designer XL</option><option>PICASO Designer XL Pro</option><option>PICASO Other</option></select></div>
+            <div class="field"><label for="scannerModel">Контроль</label><select id="scannerModel" name="scannerModel" required><option value="">Выберите</option><option>Geomagic Control X</option><option>RangeVision Spectrum</option><option>Artec Space Spider</option><option>Другое</option></select></div>
             <div class="field"><label for="materialName">Материал</label><input id="materialName" name="materialName" type="text" value="PLA" required></div>
             <div class="field"><label for="materialColor">Цвет</label><input id="materialColor" name="materialColor" type="text"></div>
-            <div class="field"><label for="materialBatch">Партия материала</label><input id="materialBatch" name="materialBatch" type="text"></div>
-            <div class="field"><label for="softwareName">ПО</label><input id="softwareName" name="softwareName" type="text" value="Geomagic Control X"></div>
           </div>
         </div>
-
-        <div class="sectionbox">
-          <h3>3. Параметры печати</h3>
-          <div class="grid3">
-            <div class="field"><label for="nozzleTemperature">Температура сопла, °C</label><input id="nozzleTemperature" name="nozzleTemperature" type="number" step="0.1" required></div>
-            <div class="field"><label for="bedTemperature">Температура стола, °C</label><input id="bedTemperature" name="bedTemperature" type="number" step="0.1" value="60"></div>
-            <div class="field"><label for="printSpeed">Скорость печати, мм/с</label><input id="printSpeed" name="printSpeed" type="number" step="0.1" required></div>
-            <div class="field"><label for="layerHeight">Высота слоя, мм</label><input id="layerHeight" name="layerHeight" type="number" step="0.01" required></div>
-            <div class="field"><label for="nozzleDiameter">Диаметр сопла, мм</label><input id="nozzleDiameter" name="nozzleDiameter" type="number" step="0.01" value="0.4"></div>
-            <div class="field"><label for="actualPrintTime">Фактическое время, мин</label><input id="actualPrintTime" name="actualPrintTime" type="number" step="0.1"></div>
+        <div class="section">
+          <h3>Параметры печати</h3>
+          <div class="grid three">
+            <div class="field"><label for="nozzleTemperature">Сопло, °C</label><input id="nozzleTemperature" name="nozzleTemperature" type="number" step="0.1" required></div>
+            <div class="field"><label for="bedTemperature">Стол, °C</label><input id="bedTemperature" name="bedTemperature" type="number" step="0.1" value="60"></div>
+            <div class="field"><label for="printSpeed">Скорость, мм/с</label><input id="printSpeed" name="printSpeed" type="number" step="0.1" required></div>
+            <div class="field"><label for="layerHeight">Слой, мм</label><input id="layerHeight" name="layerHeight" type="number" step="0.01" required></div>
+            <div class="field"><label for="nozzleDiameter">Сопло, мм</label><input id="nozzleDiameter" name="nozzleDiameter" type="number" step="0.01" value="0.4"></div>
+            <div class="field"><label for="actualPrintTime">Время, мин</label><input id="actualPrintTime" name="actualPrintTime" type="number" step="0.1"></div>
           </div>
         </div>
-
-        <div class="sectionbox">
-          <h3>4. Линейные измерения</h3>
-          <div class="grid3">
-            <div class="field"><label for="cadX">CAD X, мм</label><input id="cadX" name="cadX" type="number" step="0.001" value="120" required></div>
-            <div class="field"><label for="factX">Факт X, мм</label><input id="factX" name="factX" type="number" step="0.001" required></div>
-            <div class="field"><label for="cadY">CAD Y, мм</label><input id="cadY" name="cadY" type="number" step="0.001" value="80" required></div>
-            <div class="field"><label for="factY">Факт Y, мм</label><input id="factY" name="factY" type="number" step="0.001" required></div>
-            <div class="field"><label for="cadZ">CAD Z, мм</label><input id="cadZ" name="cadZ" type="number" step="0.001" value="14" required></div>
-            <div class="field"><label for="factZ">Факт Z, мм</label><input id="factZ" name="factZ" type="number" step="0.001" required></div>
+        <div class="section">
+          <h3>Измерения</h3>
+          <div class="grid three">
+            <div class="field"><label for="cadX">CAD X</label><input id="cadX" name="cadX" type="number" step="0.001" value="120" required></div>
+            <div class="field"><label for="factX">Факт X</label><input id="factX" name="factX" type="number" step="0.001" required></div>
+            <div class="field"><label for="cadY">CAD Y</label><input id="cadY" name="cadY" type="number" step="0.001" value="80" required></div>
+            <div class="field"><label for="factY">Факт Y</label><input id="factY" name="factY" type="number" step="0.001" required></div>
+            <div class="field"><label for="cadZ">CAD Z</label><input id="cadZ" name="cadZ" type="number" step="0.001" value="14" required></div>
+            <div class="field"><label for="factZ">Факт Z</label><input id="factZ" name="factZ" type="number" step="0.001" required></div>
           </div>
         </div>
-
-        <div class="sectionbox">
-          <h3>5. Метрики scan-to-CAD</h3>
-          <div class="grid3">
-            <div class="field"><label for="meanDeviation">Среднее отклонение, мм</label><input id="meanDeviation" name="meanDeviation" type="number" step="0.001"></div>
-            <div class="field"><label for="meanAbsDeviation">Среднее абсолютное, мм</label><input id="meanAbsDeviation" name="meanAbsDeviation" type="number" step="0.001"></div>
-            <div class="field"><label for="rmsDeviation">RMS, мм</label><input id="rmsDeviation" name="rmsDeviation" type="number" step="0.001"></div>
-            <div class="field"><label for="maxPositiveDeviation">Max +, мм</label><input id="maxPositiveDeviation" name="maxPositiveDeviation" type="number" step="0.001"></div>
-            <div class="field"><label for="maxNegativeDeviation">Max -, мм</label><input id="maxNegativeDeviation" name="maxNegativeDeviation" type="number" step="0.001"></div>
-            <div class="field"><label for="toleranceRatio">Доля в допуске, %</label><input id="toleranceRatio" name="toleranceRatio" type="number" step="0.1"></div>
-          </div>
-        </div>
-
-        <div class="sectionbox">
-          <h3>6. Ссылки и комментарий</h3>
+        <div class="section">
+          <h3>Контроль и ссылки</h3>
           <div class="grid">
-            <div class="field full"><label for="photoLink">Ссылка на фото</label><input id="photoLink" name="photoLink" type="url"></div>
-            <div class="field full"><label for="deviationMapLink">Ссылка на карту отклонений</label><input id="deviationMapLink" name="deviationMapLink" type="url"></div>
-            <div class="field full"><label for="gcodeLink">Ссылка на G-code</label><input id="gcodeLink" name="gcodeLink" type="url"></div>
-            <div class="field full"><label for="scanReportLink">Ссылка на отчет scan-to-CAD</label><input id="scanReportLink" name="scanReportLink" type="url"></div>
-            <div class="field full"><label for="notes">Комментарий</label><textarea id="notes" name="notes"></textarea></div>
+            <div class="field"><label for="meanDeviation">Среднее отклонение, мм</label><input id="meanDeviation" name="meanDeviation" type="number" step="0.001"></div>
+            <div class="field"><label for="rmsDeviation">RMS, мм</label><input id="rmsDeviation" name="rmsDeviation" type="number" step="0.001"></div>
+            <div class="field"><label for="photoLink">Фото</label><input id="photoLink" name="photoLink" type="url"></div>
+            <div class="field"><label for="scanReportLink">Отчет</label><input id="scanReportLink" name="scanReportLink" type="url"></div>
+            <div class="field"><label for="deviationMapLink">Карта отклонений</label><input id="deviationMapLink" name="deviationMapLink" type="url"></div>
+            <div class="field"><label for="gcodeLink">G-code</label><input id="gcodeLink" name="gcodeLink" type="url"></div>
+            <div class="field" style="grid-column:1/-1"><label for="notes">Комментарий</label><textarea id="notes" name="notes"></textarea></div>
           </div>
         </div>
-
         <div class="actions" id="send">
-          <button class="btn primary" type="submit">Отправить запись</button>
-          <button class="btn ghost" type="button" id="saveDraft">Сохранить черновик</button>
-          <a class="btn ghost" href="database.html">Открыть базу</a>
+          <button class="btn primary" type="submit">Отправить</button>
+          <button class="btn secondary" type="button" id="saveDraft">Сохранить черновик</button>
+          <a class="btn secondary" href="database.html">Открыть базу</a>
           <div class="status" id="status">Форма готова</div>
         </div>
       </form>
@@ -151,7 +124,7 @@
 </main>
 <script>
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbzv3_dlEaWzyDSIKaP6fQ6OM_6sFfD3R8Oo5sjvghRvaKLbVwfCgBfKYQxRNlBdWdmqWw/exec';
-const DRAFT_KEY='step3d_lab_experiment_ux_v1';
+const DRAFT_KEY='step3d_lab_experiment_minimal_v1';
 const form=document.getElementById('experimentForm');
 const statusNode=document.getElementById('status');
 const saveDraft=document.getElementById('saveDraft');
@@ -160,21 +133,15 @@ const metricInputs=['cadX','factX','cadY','factY','cadZ','factZ'];
 const requiredNodes=[...form.querySelectorAll('[required]')];
 const views={x:document.getElementById('sxView'),y:document.getElementById('syView'),z:document.getElementById('szView'),i:document.getElementById('siView')};
 function setStatus(t,m=''){statusNode.textContent=t;statusNode.className=`status ${m}`.trim();}
-function buildSampleId(){const d=document.getElementById('experimentDate').value||'date';const p=(document.getElementById('printerModel').value||'printer').replaceAll(/\s+/g,'_').replaceAll('/','_').toUpperCase();const v=(document.getElementById('variantCode').value||'variant').trim().toUpperCase();const r=(document.getElementById('repeatCode').value||'repeat').trim().toUpperCase();const s=(document.getElementById('studentName').value||'student').trim().toUpperCase().replaceAll(/\s+/g,'_').replaceAll('Ё','Е').slice(0,18);const id=`${d}_${p}_${v}_${r}_${s}`;document.getElementById('sampleId').value=id;document.getElementById('sampleIdView').textContent=id==='date_PRINTER_VARIANT_REPEAT_STUDENT'?'-':id;}
+function buildSampleId(){const d=document.getElementById('experimentDate').value||'date';const p=(document.getElementById('printerModel').value||'printer').replaceAll(/\s+/g,'_').replaceAll('/','_').toUpperCase();const v=(document.getElementById('variantCode').value||'variant').trim().toUpperCase();const r=(document.getElementById('repeatCode').value||'repeat').trim().toUpperCase();const s=(document.getElementById('studentName').value||'student').trim().toUpperCase().replaceAll(/\s+/g,'_').replaceAll('Ё','Е').slice(0,18);const id=`${d}_${p}_${v}_${r}_${s}`;document.getElementById('sampleId').value=id;document.getElementById('sampleIdView').textContent=id;}
 function calc(c,f){if(!Number.isFinite(c)||!Number.isFinite(f)||c===0)return null;return((c-f)/c)*100;}
 function updateDerived(){const cx=parseFloat(document.getElementById('cadX').value),fx=parseFloat(document.getElementById('factX').value),cy=parseFloat(document.getElementById('cadY').value),fy=parseFloat(document.getElementById('factY').value),cz=parseFloat(document.getElementById('cadZ').value),fz=parseFloat(document.getElementById('factZ').value);const sx=calc(cx,fx),sy=calc(cy,fy),sz=calc(cz,fz);const vals=[sx,sy,sz].filter(v=>Number.isFinite(v));const si=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;views.x.textContent=Number.isFinite(sx)?`${sx.toFixed(3)} %`:'-';views.y.textContent=Number.isFinite(sy)?`${sy.toFixed(3)} %`:'-';views.z.textContent=Number.isFinite(sz)?`${sz.toFixed(3)} %`:'-';views.i.textContent=Number.isFinite(si)?`${si.toFixed(3)} %`:'-';return{shrinkageX:Number.isFinite(sx)?sx:'',shrinkageY:Number.isFinite(sy)?sy:'',shrinkageZ:Number.isFinite(sz)?sz:'',shrinkageIntegral:Number.isFinite(si)?si:''};}
 function updateProgress(){const requiredCount=requiredNodes.length;let filled=0;requiredNodes.forEach(node=>{if(String(node.value||'').trim()!=='') filled++;});const percent=requiredCount?Math.round(filled/requiredCount*100):0;document.getElementById('requiredCount').textContent=requiredCount;document.getElementById('filledCount').textContent=filled;document.getElementById('progressFill').style.width=`${percent}%`;}
-function serialize(){const fd=new FormData(form);const payload=Object.fromEntries(fd.entries());return{...payload,...updateDerived(),submittedAt:new Date().toISOString(),platform:'Step3D.Lab UX form',stlFolder:'https://github.com/STEP3DLab/print3D/tree/main/models/Step3D_01'};}
+function serialize(){const fd=new FormData(form);const payload=Object.fromEntries(fd.entries());return{...payload,...updateDerived(),submittedAt:new Date().toISOString(),platform:'Step3D.Lab minimal form',stlFolder:'https://github.com/STEP3DLab/print3D/tree/main/models/Step3D_01'};}
 function saveLocal(){localStorage.setItem(DRAFT_KEY,JSON.stringify(serialize()));document.getElementById('draftState').textContent='Сохранен';setStatus('Черновик сохранен','ok');}
 function restoreLocal(){const raw=localStorage.getItem(DRAFT_KEY);if(!raw)return;try{const d=JSON.parse(raw);Object.entries(d).forEach(([k,v])=>{const n=document.getElementById(k);if(n&&typeof v==='string')n.value=v;});document.getElementById('draftState').textContent='Восстановлен';setStatus('Черновик восстановлен','ok');}catch(e){console.error(e);}}
 async function submit(payload){const response=await fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});const text=await response.text();return{ok:response.ok,text};}
-sampleIdFields.forEach(id=>{document.getElementById(id).addEventListener('input',()=>{buildSampleId();updateProgress();});document.getElementById(id).addEventListener('change',()=>{buildSampleId();updateProgress();});});
-metricInputs.forEach(id=>document.getElementById(id).addEventListener('input',()=>{updateDerived();updateProgress();}));
-form.addEventListener('input',()=>{buildSampleId();updateDerived();updateProgress();});
-saveDraft.addEventListener('click',saveLocal);
-form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity()){setStatus('Проверьте обязательные поля','warn');return;}const payload=serialize();try{setStatus('Идет отправка...');const result=await submit(payload);if(!result.ok)throw new Error(result.text||'Ошибка');setStatus('Запись успешно отправлена','ok');localStorage.removeItem(DRAFT_KEY);document.getElementById('draftState').textContent='Очищен';}catch(err){console.error(err);setStatus('Не удалось отправить. Черновик сохранен.','err');saveLocal();}});
-if(!document.getElementById('experimentDate').value)document.getElementById('experimentDate').value=new Date().toISOString().slice(0,10);
-restoreLocal();buildSampleId();updateDerived();updateProgress();
+sampleIdFields.forEach(id=>{document.getElementById(id).addEventListener('input',()=>{buildSampleId();updateProgress();});document.getElementById(id).addEventListener('change',()=>{buildSampleId();updateProgress();});});metricInputs.forEach(id=>document.getElementById(id).addEventListener('input',()=>{updateDerived();updateProgress();}));form.addEventListener('input',()=>{buildSampleId();updateDerived();updateProgress();});saveDraft.addEventListener('click',saveLocal);form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity()){setStatus('Проверьте обязательные поля','warn');return;}const payload=serialize();try{setStatus('Идет отправка...');const result=await submit(payload);if(!result.ok)throw new Error(result.text||'Ошибка');setStatus('Запись успешно отправлена','ok');localStorage.removeItem(DRAFT_KEY);document.getElementById('draftState').textContent='Очищен';}catch(err){console.error(err);setStatus('Не удалось отправить. Черновик сохранен.','err');saveLocal();}});if(!document.getElementById('experimentDate').value)document.getElementById('experimentDate').value=new Date().toISOString().slice(0,10);restoreLocal();buildSampleId();updateDerived();updateProgress();
 </script>
 </body>
 </html>
