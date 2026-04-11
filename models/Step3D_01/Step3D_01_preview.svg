@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef4ff"/>
+      <stop offset="100%" stop-color="#d7e7ff"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#c9daf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="#f8fbff"/>
+  <text x="80" y="90" font-size="44" font-family="Arial" fill="#0f172a" font-weight="700">Step3D_01</text>
+  <text x="80" y="132" font-size="26" font-family="Arial" fill="#667085">Визуальный эскиз образца для сайта Step3D.Lab</text>
+  <g transform="translate(150,180)">
+    <polygon points="0,130 320,20 710,110 390,220" fill="url(#g1)" stroke="#7aa2e3" stroke-width="3"/>
+    <polygon points="390,220 710,110 710,170 390,280" fill="#d6e3fb" stroke="#7aa2e3" stroke-width="3"/>
+    <polygon points="0,130 390,220 390,280 0,190" fill="#e6eefc" stroke="#7aa2e3" stroke-width="3"/>
+    <g fill="url(#g2)" stroke="#577fcb" stroke-width="2.2">
+      <polygon points="120,145 205,116 205,72 120,101"/>
+      <polygon points="205,116 305,82 305,38 205,72"/>
+      <polygon points="305,82 430,124 430,80 305,38" opacity="0.98"/>
+      <polygon points="205,116 430,124 430,170 205,162" opacity="0.92"/>
+      <polygon points="448,145 510,124 510,88 448,109"/>
+      <polygon points="510,124 562,142 562,106 510,88" opacity="0.96"/>
+      <polygon points="448,145 510,160 562,142 510,124" opacity="0.88"/>
+      <polygon points="245,196 310,173 310,118 245,141"/>
+      <polygon points="310,173 390,146 390,91 310,118"/>
+      <polygon points="390,146 470,172 470,117 390,91"/>
+      <polygon points="310,173 470,172 470,228 310,229" opacity="0.93"/>
+    </g>
+  </g>
+  <g font-family="Arial" fill="#334155">
+    <rect x="760" y="170" width="330" height="230" rx="24" fill="#ffffff" stroke="#d7e3f4"/>
+    <text x="790" y="220" font-size="28" font-weight="700">Ключевые признаки</text>
+    <text x="790" y="265" font-size="22">• габарит 120 x 80 x 14 мм</text>
+    <text x="790" y="305" font-size="22">• ступенчатый рельеф</text>
+    <text x="790" y="345" font-size="22">• плоское основание 4 мм</text>
+    <text x="790" y="385" font-size="22">• пригоден для FDM-печати</text>
+  </g>
+</svg>

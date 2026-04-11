@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#ffffff"/>
+  <text x="700" y="70" text-anchor="middle" font-size="42" font-family="Arial" fill="#111827">Step3D_01 - чертеж для сайта</text>
+
+  <g transform="translate(120,150)" font-family="Arial" stroke="#111827" fill="none">
+    <text x="260" y="-28" font-size="26" fill="#111827">Вид сверху</text>
+    <path d="M0 70 h50 v-50 h1030 v680 h-1080 z" stroke-width="3"/>
+    <rect x="170" y="430" width="90" height="90" rx="6" stroke-width="3"/>
+    <g stroke="#666" stroke-width="2">
+      <rect x="80" y="220" width="120" height="260"/>
+      <rect x="200" y="180" width="120" height="340"/>
+      <rect x="320" y="130" width="140" height="390"/>
+      <rect x="460" y="80" width="140" height="440"/>
+      <rect x="600" y="130" width="120" height="390"/>
+      <rect x="720" y="180" width="100" height="340"/>
+      <rect x="860" y="150" width="90" height="370"/>
+    </g>
+    <line x1="0" y1="-15" x2="1080" y2="-15" stroke-width="2"/>
+    <line x1="0" y1="-15" x2="0" y2="20" stroke-width="2"/>
+    <line x1="1080" y1="-15" x2="1080" y2="20" stroke-width="2"/>
+    <text x="540" y="-30" text-anchor="middle" font-size="22" fill="#111827">120 мм</text>
+    <line x1="-20" y1="70" x2="-20" y2="580" stroke-width="2"/>
+    <line x1="-20" y1="70" x2="0" y2="70" stroke-width="2"/>
+    <line x1="-20" y1="580" x2="0" y2="580" stroke-width="2"/>
+    <text x="-55" y="340" transform="rotate(-90 -55 340)" font-size="22" fill="#111827">80 мм</text>
+  </g>
+
+  <g transform="translate(160,760)" font-family="Arial" stroke="#111827" fill="none">
+    <text x="260" y="-28" font-size="26" fill="#111827">Вид спереди</text>
+    <path d="M0 60 h100 l20 -10 h80 l20 -12 h90 l20 -14 h90 l20 14 h90 l20 12 h80 l20 10 h100 v40 h-650 z" stroke-width="3"/>
+    <line x1="0" y1="0" x2="650" y2="0" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="20" stroke-width="2"/>
+    <line x1="650" y1="0" x2="650" y2="20" stroke-width="2"/>
+    <text x="325" y="-10" text-anchor="middle" font-size="22" fill="#111827">120 мм</text>
+    <line x1="680" y1="20" x2="680" y2="100" stroke-width="2"/>
+    <line x1="650" y1="20" x2="680" y2="20" stroke-width="2"/>
+    <line x1="650" y1="100" x2="680" y2="100" stroke-width="2"/>
+    <text x="710" y="66" transform="rotate(-90 710 66)" font-size="22" fill="#111827">14 мм</text>
+  </g>
+
+  <g transform="translate(910,760)" font-family="Arial" stroke="#111827" fill="none">
+    <text x="180" y="-28" font-size="26" fill="#111827">Вид слева</text>
+    <path d="M0 60 h70 l18 -16 h90 l18 -14 h90 l18 -12 h90 l18 12 h90 l18 14 h90 l18 16 h70 v40 h-680 z" stroke-width="3"/>
+    <line x1="0" y1="0" x2="680" y2="0" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="20" stroke-width="2"/>
+    <line x1="680" y1="0" x2="680" y2="20" stroke-width="2"/>
+    <text x="340" y="-10" text-anchor="middle" font-size="22" fill="#111827">80 мм</text>
+  </g>
+</svg>
